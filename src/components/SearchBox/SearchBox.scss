@@ -11,10 +11,10 @@
 			line-height: var(--line-height1-25);
 			padding: 0 0 0 var(--padding-l1-6);
 			display: block;
-			border: 1px solid var(--border-color);
+			border: 1px solid var(--primary-color);
 			&:focus{
 				outline: 0;
-				border-color: var(--border-color);
+				border-color: var(--primary-color);
 			}
 		}
 		&-icon-container{

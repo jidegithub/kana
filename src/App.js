@@ -2,7 +2,7 @@ import './App.scss';
 import Prompt from './components/Prompt/Prompt';
 import Select from './components/sampleSelect/Select';
 import SearchBox from './components/SearchBox/SearchBox';
-import Templates from './components/Template/Template';
+import Templates from './components/Templates/Templates';
 // import SelectDropDown from './components/SelectDropDown/SelectDropDown';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <header className="header">
+      <header className="header">
         <section>
           <SearchBox/>
         </section>
@@ -30,7 +30,7 @@ function App() {
             options={date}
           />
         </section>
-      </header> */}
+      </header>
       <main className="main">
         <Prompt
           info={info}

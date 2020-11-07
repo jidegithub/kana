@@ -1,4 +1,11 @@
 .main-info-box{
-    background: antiquewhite;
-    margin-bottom: 3rem;
+  background: antiquewhite;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 780px) {
+  .main-info-box{
+    text-align: center;
+    font-size: .8rem;
   }
+}
