@@ -1,0 +1,79 @@
+// @import url('https://fonts.googleapis.com/css?family=Lato');
+
+$dark-blue: #31315b;
+$darker-blue: #32325d;
+// $light-blue: #31315b;
+$off-gray: #aab7c4;
+$light-gray: #79827f;
+$template-link-color: #2fdc44; 
+$template-link-colorII:#00D029;
+
+
+.template-container {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  margin: 0 auto;
+  width: 50%;
+  padding: 20px 20px 20px 20px;
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  h3 {
+    // text-align: left;
+    color: $dark-blue;
+    font-size: 2.2rem;
+    // font-weight: 600;
+    // padding: 0px 0px 10px 0px;
+    line-height: 1.4; 
+    // padding: 2px 0; 
+    // width: 72%;
+    // width: 400px;
+    margin: 20px auto;
+    span{ 
+      color: inherit; 
+      display: inline;
+      padding: 0.45rem;
+      padding: 0.5rem;
+      padding-left: 0;
+      padding-right: 0;
+      /* Needs prefixing */
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      -ms-box-decoration-break: clone;
+      -o-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+  }
+  
+}
+
+.template-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  p {
+    // align-self: center;
+    font-size: 1.5rem;
+    color: $dark-blue;
+    flex-basis: 100%;
+    // margin-top: -20px;
+    // text-align: center;
+    margin-bottom: 60px;
+  }
+}
+a {
+  border: none;
+  cursor: pointer;
+  color: $template-link-colorII;
+  display: block;
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 26px;
+  letter-spacing: .025em;
+  padding: 0.45rem 0;
+  transition: background .15s ease;
+  &:hover {
+    background: #cfd7df;
+  }
+}

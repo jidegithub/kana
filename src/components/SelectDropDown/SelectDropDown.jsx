@@ -1,0 +1,186 @@
+import React, { useRef, useState, useEffect } from 'react'
+import {
+  SPACEBAR_KEY_CODE,
+  ENTER_KEY_CODE,
+  DOWN_ARROW_KEY_CODE,
+  UP_ARROW_KEY_CODE,
+  ESCAPE_KEY_CODE
+} from "../../utils/keyboardCodes"
+import "./SelectDropDown.scss"
+// import PropTypes from 'prop-types'
+
+function SelectDropDown({ props }) {
+  const dropdownOptions = [{ name: "gogo", id: 52 }, { name: "anime", id: 63 }, { name: "blow", id: 15 }];
+
+  const list = useRef(null);
+  const listContainer = useRef(null)
+  const dropDownArrow = useRef(null)
+  const listItems = useRef([])
+  const dropDownSelectedNode = useRef(null)
+
+  const [listItemIds, setListItemIds] = useState([])
+
+  useEffect(() => {
+    AddOptionToListItemId()
+  }, [listItemIds])
+
+  const AddOptionToListItemId = () => {
+    // Add each list items id to the listItemsids array
+    // let ids = dropdownOptions.map(option => option.id);
+    // setListItemIds(ids)
+    console.log(listItemIds)
+  }
+
+  const handleOnSelect = (e) => {
+    console.log(e)
+    // setSelectedListItem(e);
+    // closeList();
+  }
+
+
+  const toggleListVisibility = (e) => {
+    console.log(e)
+  }
+
+  // const setSelectedListItem = (e) => {
+  //   let selectedTextToAppend = document.createTextNode(e.target.innerText);
+  //   dropdownSelectedNode.innerHTML = null;
+  //   dropdownSelectedNode.appendChild(selectedTextToAppend);
+  // }
+
+  // const closeList = () => {
+  //   list.classList.remove("open");
+  //   dropdownArrow.classList.remove("expanded");
+  //   listContainer.setAttribute("aria-expanded", false);
+  // }
+
+  // const toggleListVisibility = (e) =>  {
+  //   let openDropDown = SPACEBAR_KEY_CODE.includes(e.keyCode) || e.keyCode === ENTER_KEY_CODE;
+
+  //   if (e.keyCode === ESCAPE_KEY_CODE) {
+  //     closeList();
+  //   }
+
+  //   if (e.type === "click" || openDropDown) {
+  //     list.classList.toggle("open");
+  //     dropdownArrow.classList.toggle("expanded");
+  //     listContainer.setAttribute(
+  //       "aria-expanded",
+  //       list.classList.contains("open")
+  //     );
+  //   }
+
+  //   if (e.keyCode === DOWN_ARROW_KEY_CODE) {
+  //     focusNextListItem(DOWN_ARROW_KEY_CODE);
+  //   }
+
+  //   if (e.keyCode === UP_ARROW_KEY_CODE) {
+  //     focusNextListItem(UP_ARROW_KEY_CODE);
+  //   }
+  // }
+
+  // const focusNextListItem = (direction) => {
+  //   const activeElementId = document.activeElement.id;
+  //   if (activeElementId === "dropdown__selected") {
+  //     document.querySelector(`#${listItemIds[0]}`).focus();
+  //   } else {
+  //     const currentActiveElementIndex = listItemIds.indexOf(activeElementId);
+  //     if (direction === DOWN_ARROW_KEY_CODE) {
+  //       const currentActiveElementIsNotLastItem =
+  //         currentActiveElementIndex < listItemIds.length - 1;
+  //       if (currentActiveElementIsNotLastItem) {
+  //         const nextListItemId = listItemIds[currentActiveElementIndex + 1];
+  //         document.querySelector(`#${nextListItemId}`).focus();
+  //       }
+  //     } else if (direction === UP_ARROW_KEY_CODE) {
+  //       const currentActiveElementIsNotFirstItem =
+  //         currentActiveElementIndex > 0;
+  //       if (currentActiveElementIsNotFirstItem) {
+  //         const nextListItemId = listItemIds[currentActiveElementIndex - 1];
+  //         document.querySelector(`#${nextListItemId}`).focus();
+  //       }
+  //     }
+  //   }
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  return (
+    <>
+      <ul className="dropdown">
+        <li id="dropdown-label" className="dropdown__label">
+          Category
+        </li>
+        <li
+          onClick={toggleListVisibility}
+          onKeyDown={toggleListVisibility}
+          ref={dropDownSelectedNode}
+          role="button"
+          aria-labelledby="dropdown-label"
+          id="dropdown__selected"
+          tabIndex="0"
+        >
+          Option 1
+        </li>
+
+        <svg
+          ref={dropDownArrow}
+          className="dropdown__arrow"
+          width="10"
+          height="5"
+          viewBox="0 0 10 5"
+          fillRule="evenodd"
+        >
+          <title>Open drop down</title>
+          <path d="M10 0L5 5 0 0z"></path>
+        </svg>
+        <li ref={listContainer} aria-expanded="false" role="list" className="dropdown__list-container">
+          <ul ref={list} className="dropdown__list">
+            {dropdownOptions.map((option, i) =>
+              <li key={option.id}
+                onClick={handleOnSelect}
+                id={option.id}
+                ref={el => listItems.current[option.id] = el}
+                className="dropdown__list-item" tabIndex="0">
+                {option.name}
+              </li>)}
+            {/* <li ref={listItems} className="dropdown__list-item" tabIndex="0" id="option-1">
+              Option 1
+            </li>
+            <li ref={listItems} className="dropdown__list-item" tabIndex="0" id="option-2">
+              Option 2 is really longgggggggggggggggg
+            </li> */}
+          </ul>
+        </li>
+      </ul>
+    </>
+  )
+};
+
+// SelectDropDown.propTypes = {
+
+// }
+
+export default SelectDropDown
+
