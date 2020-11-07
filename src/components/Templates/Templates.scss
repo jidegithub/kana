@@ -3,10 +3,32 @@
   grid-template-columns: repeat(3, minmax(180px, 1fr));
   // grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-gap: 2em;
+  height: 1024px;
+  overflow-x:auto;
+  padding: 0.5rem 1.5rem;
+
+  &::-webkit-scrollbar {
+    width: 0.47rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #3F3E3E;
+    border-radius: 37px;
+    height: 10rem;
+  }
+  &::-webkit-scrollbar-track {
+    background-color:white;
+  }
+}
+.templates-grand-container{
+  height: auto;
+  width: auto; 
+  padding: 3px; 
+  scroll-behavior: smooth;
 }
 
 @media (max-width: 1024px) {
   .templates-grid {
+    height: 250px;
     display: grid;
     grid-template-columns: repeat(2, minmax(180px, 1fr));
     flex-direction: column;

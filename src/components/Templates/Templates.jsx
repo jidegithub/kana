@@ -1,6 +1,7 @@
 import React, { useEffect, Suspense, lazy } from 'react'
 import short from 'short-uuid';
-import { PropTypes } from 'prop-types';
+import CurrentTemplatesInfo from '../CurrentTemplatesInFo/CurrentTemplatesInfo'
+// import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import './Templates.scss';
 import { fetchTemplates } from '../../actions/index';
@@ -9,7 +10,7 @@ const Template = lazy(() => import('../Template/Template'));
 
 
 function Templates(props) {
-  const {templates} = props;
+  const { templates, fetchTemplates} = props;
   
   const templatesList = templates.map(function (template) {
     return(
@@ -23,40 +24,23 @@ function Templates(props) {
 
   const templateListUnavailable = () => <div><p>No templates found! try filtering.</p></div>
 
-
   useEffect(() => {
-    props.fetchTemplates()
+    fetchTemplates()
     // return () => {
     //   cleanup
     // }
-    console.log(props)
-  }, [props])
+  }, [fetchTemplates])
 
   return (
-    <div className="templates-grid">
-      <Suspense fallback={templateListUnavailable()}>
-        {templates.length ? templatesList : 
-      <div><p>No templates found! try filtering.</p></div>}
-      </Suspense>
-      {/* {templates.length ? templatesList : 
-      <div><p>No templates found! try filtering.</p></div>} */}
-      {/* <Template
-        
-
-      />
-      <Template
-       
-
-      />
-      <Template
-        
-
-      />
-      <Template
-        key={short.generate()}
-
-      /> */}
-    </div>
+    <section className="templates-grand-container">
+      <CurrentTemplatesInfo/>
+      <div className="templates-grid">
+        <Suspense fallback={templateListUnavailable()}>
+          {templates.length ? templatesList : 
+        <div style={{marginLeft: 10}}><p>No templates found! try filtering.</p></div>}
+        </Suspense>
+      </div>
+    </section>
   )
 };
 

@@ -1,14 +1,14 @@
 import './App.scss';
 import Prompt from './components/Prompt/Prompt';
-import Select from './components/sampleSelect/Select';
+import Select from './components/sampleSelect/SelectBox';
 import SearchBox from './components/SearchBox/SearchBox';
 import Templates from './components/Templates/Templates';
 // import SelectDropDown from './components/SelectDropDown/SelectDropDown';
 
 function App() {
-  const category = ["All", "Education", "E-commerce", "Health"];
-  const order = ["default", "ascending", "descending"];
-  const date = ["Default", "Ascending", "Descending" ];
+  const category = {name: "category", options: ["All", "Education", "E-commerce", "Health"]};
+  const order = {name: "order", options: ["default", "ascending", "descending"]};
+  const date = {name:"date", options: ["default", "ascending", "descending" ]};
   const info = "Tada! Get started with free template. Can't find what you are looking for? Search from the 1000+ available templates"
 
   return (
@@ -19,15 +19,18 @@ function App() {
         </section>
         <section>
           <Select
-            options={category}
+            config={category}
+            name={category.name}
             marg={16}
           />
           <Select
-            options={order}
+            config={order}
+            name={order.name}
             marg={16}
           />
           <Select
-            options={date}
+            config={date}
+            name={date.name}
           />
         </section>
       </header>
@@ -35,6 +38,7 @@ function App() {
         <Prompt
           info={info}
         />
+        
         <Templates/>
       </main>
     </div>

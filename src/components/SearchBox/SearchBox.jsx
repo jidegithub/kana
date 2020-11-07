@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux';
 import './SearchBox.scss'
-import {SearchTemplate} from '../../actions' 
+import {searchTemplate} from '../../actions' 
 
 
 function SearchBox(props) {
@@ -10,7 +10,7 @@ function SearchBox(props) {
   const handleOnChange = e => {
     const { value } = e.target;
     setParam(value)
-    props.SearchTemplate(value)
+    props.searchTemplate(value)
     console.log(e.target.value)
   }
 
@@ -20,7 +20,6 @@ function SearchBox(props) {
     //   cleanup
     // }
   }, [param])
-
 
 
   return (
@@ -43,10 +42,11 @@ function SearchBox(props) {
 };
 
 const mapStateToProps = (state) => {
+  // console.log(state)
   return state;
 }
 
-export default connect(mapStateToProps ,{SearchTemplate})(SearchBox);
+export default connect(mapStateToProps ,{searchTemplate})(SearchBox);
 
 
 
