@@ -47,10 +47,10 @@ export const searchTemplate = (allTemplates, searchParam) => {
 };
 
 export const sortTemplatePerNameOrder = (allTemplates, order) => (dispatch) => {
-  const products = allTemplates.slice();
+  const templates = allTemplates.slice();
   
   if (order !== "") {
-    products.sort((a, b) =>
+    templates.sort((a, b) =>
       order === "ascending"
         ? a.name > b.name
           ? 1
@@ -60,27 +60,37 @@ export const sortTemplatePerNameOrder = (allTemplates, order) => (dispatch) => {
           : -1
     );
   } else {
-    products.sort((a, b) => (a.id > b.id ? 1 : -1));
+    templates.sort((a, b) => (a.id > b.id ? 1 : -1));
   }
   dispatch({
     type: "ORDER_TEMPLATES_BY_NAME",
     payload: {
       order: order,
-      items: products,
+      items: templates,
     },
   });
 }
 
-export const sortTemplatePerDate = (allTemplates, sortParam) => (dispatch) => {
-  // let toSortAsc = sortBy(allTemplates, { prop: "created", parser: (item) => new Date(item)});
-  // let toSortDesc = sortBy(allTemplates, { prop: "created", desc: true, parser: (item) => new Date(item)});
+export const sortTemplatePerDate = (allTemplates, dateCreated) => (dispatch) => {
+  const templates = allTemplates.slice();
+  if (dateCreated !== "") {
+    templates.sort((a, b) =>
+      dateCreated === "ascending"
+        ? a.created > b.created
+          ? 1
+          : -1
+        : a.created < b.created
+          ? 1
+          : -1
+    );
+  } else {
+    templates.sort((a, b) => (a.id > b.id ? 1 : -1));
+  }
   dispatch({
     type: "SORT_TEMPLATE_DATE",
     payload:{
-      sortParam: sortParam,
-      sorted: sortParam == "ascending" ? 
-      sortBy(allTemplates, { prop: "created", parser: (item) => new Date(item) }) : 
-      sortBy(allTemplates, { prop: "created", desc: true, parser: (item) => new Date(item) })
+      dateCreated: dateCreated,
+      items: templates
     }
   })
 }

@@ -8,7 +8,7 @@ function DateSelectBox({ config, name, allTemplates, filteredTemplates, sortTemp
   const handleOnchange = (e) => {
     const { value } = e.target;
     setValue(value)
-    sortTemplatePerDate(allTemplates,value)
+    sortTemplatePerDate(allTemplates, value)
     // console.log(value)
   }
 
@@ -36,7 +36,7 @@ function DateSelectBox({ config, name, allTemplates, filteredTemplates, sortTemp
 const mapStateToProps = (state) => ({
   allTemplates: state.templates.templates,
   filteredTemplates: state.templates.filteredTemplates,
-  sortParam: state.dateCreated,
+  sortParam: state.templates.dateCreated,
   // console: console.log(state)
 })
 

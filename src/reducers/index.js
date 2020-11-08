@@ -26,8 +26,8 @@ const templatesReducer = (state = initState, action) => {
     case "SORT_TEMPLATE_DATE" :
       return {
         ...state, 
-        filteredTemplates: action.payload.sorted,
-        dateCreated: action.payload.sortParam
+        filteredTemplates: action.payload.items,
+        dateCreated: action.payload.dateCreated
       }
     case "SELECT_TEMPLATE":
       return { ...state, selectedTemplate: action.payload };
