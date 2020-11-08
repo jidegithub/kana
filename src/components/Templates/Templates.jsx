@@ -9,10 +9,9 @@ const Template = lazy(() => import('../Template/Template'));
 // import Template from '../Template/Template';
 
 
-function Templates(props) {
-  const { templates, fetchTemplates} = props;
+function Templates({ unModifiedTemplates, fetchTemplates}) {
   
-  const templatesList = templates.map(function (template) {
+  const templatesList = unModifiedTemplates.map(function (template) {
     return(
       <Template
         key={short.generate()}
@@ -26,9 +25,6 @@ function Templates(props) {
 
   useEffect(() => {
     fetchTemplates()
-    // return () => {
-    //   cleanup
-    // }
   }, [fetchTemplates])
 
   return (
@@ -36,7 +32,7 @@ function Templates(props) {
       <CurrentTemplatesInfo/>
       <div className="templates-grid">
         <Suspense fallback={templateListUnavailable()}>
-          {templates.length ? templatesList : 
+          {unModifiedTemplates.length ? templatesList : 
         <div style={{marginLeft: 10}}><p>No templates found! try filtering.</p></div>}
         </Suspense>
       </div>
@@ -45,7 +41,7 @@ function Templates(props) {
 };
 
 const mapStateToProps = (state) => ({
-  templates: state.templates.filteredTemplates
+  unModifiedTemplates: state.templates.filteredTemplates
 })
 
 export default connect(mapStateToProps, { fetchTemplates })(Templates);

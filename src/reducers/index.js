@@ -9,12 +9,12 @@ const templatesReducer = (state = initState, action) => {
     case "SEARCH_TEMPLATE":
       return {
         ...state,
-        filteredTemplates: action.payload.templates,
+        filteredTemplates: action.payload.matchedTemplates,
         searchParam: action.payload.searchParam
       }
     case "TEMPLATES_FILTER_PARAM":
       return { ...state,
-        filteredTemplates: action.payload.templates, 
+        filteredTemplates: action.payload.MatchedTemplates, 
         templateFilterParam: action.payload.templateFilterParam  
       };
     case "SELECT_TEMPLATE":

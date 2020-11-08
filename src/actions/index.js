@@ -19,30 +19,34 @@ export const fetchTemplates = () => {
   }
 };
 
-export const filterTemplatesParams = (alltemp, templateFilterParam) => {
+export const filterTemplatesParams = (allTemplates, templateFilterParam) => {
   return{
     type: "TEMPLATES_FILTER_PARAM",
     payload: {
       templateFilterParam: templateFilterParam,
-      templates: templateFilterParam.category === "All" ? alltemp : alltemp.filter((template) => {
+      MatchedTemplates: templateFilterParam.category === "All" ? allTemplates : allTemplates.filter((template) => (
         // return typeof template == "string" ? template == templateFilterParam.value : category.indexOf(templateFilterParam.value) >= 0;
-        return template.category.indexOf(templateFilterParam.category) > -1;
-      })
+        template.category.indexOf(templateFilterParam.category) > -1
+      ))
     }
   }
 };
 
-export const searchTemplate = (alltemp, searchParam) => {
+export const searchTemplate = (allTemplates, searchParam) => {
   return {
     type: "SEARCH_TEMPLATE",
     payload: {
       searchParam: searchParam,
-      templates: searchParam === "" ? alltemp : alltemp.filter(
+      matchedTemplates: searchParam === "" ? allTemplates : allTemplates.filter(
         temp => temp.name.toLowerCase().includes(searchParam.toLowerCase())
       )
     }
   }
 };
+
+export const sortTemplate = (allTemp, filterParam) => {
+
+}
 
 export const setSelectedTemplate = (name) => {
   return {
@@ -50,8 +54,4 @@ export const setSelectedTemplate = (name) => {
     payload: name
   }
 };
-
-
-
-
 

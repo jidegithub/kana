@@ -4,21 +4,17 @@ import './SearchBox.scss'
 import {searchTemplate} from '../../actions' 
 
 
-function SearchBox(props) {
+function SearchBox({ searchTemplate, allTemplates, filteredTemplates}) {
   const [param, setParam] = useState("")
 
   const handleOnChange = e => {
     const { value } = e.target;
     setParam(value)
-    props.searchTemplate(props.alltemp, value)
+    searchTemplate(allTemplates, value)
     console.log(e.target.value)
   }
 
   useEffect(() => {
-    // effect
-    // return () => {
-    //   cleanup
-    // }
   }, [param])
 
 
@@ -42,11 +38,9 @@ function SearchBox(props) {
 };
 
 const mapStateToProps = (state) => ({
-  alltemp: state.templates.templates,
+  allTemplates: state.templates.templates,
   filteredTemplates: state.templates.filteredTemplates,
-  searchParam:state.searchParam
-  // console.log(state)
-  // return state;
+  searchParam: state.searchParam
 })
 
 export default connect(mapStateToProps ,{searchTemplate})(SearchBox);
