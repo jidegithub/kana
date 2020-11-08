@@ -11,7 +11,7 @@ function SearchBox({ searchTemplate, allTemplates, filteredTemplates}) {
     const { value } = e.target;
     setParam(value)
     searchTemplate(allTemplates, value)
-    console.log(e.target.value)
+    // console.log(e.target.value)
   }
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const mapStateToProps = (state) => ({
   allTemplates: state.templates.templates,
   filteredTemplates: state.templates.filteredTemplates,
   searchParam: state.searchParam
-})
+});
 
 export default connect(mapStateToProps ,{searchTemplate})(SearchBox);
 

@@ -4,6 +4,8 @@ import Select from './components/sampleSelect/SelectBox';
 import SearchBox from './components/SearchBox/SearchBox';
 import Templates from './components/Templates/Templates';
 // import SelectDropDown from './components/SelectDropDown/SelectDropDown';
+import OrderSelectBox from './components/sampleSelect/OrderSelectBox';
+import DateSelectBox from './components/sampleSelect/DateSelectBox';
 
 function App() {
   const category = {name: "category", options: ["All", "Education", "E-commerce", "Health"]};
@@ -23,13 +25,14 @@ function App() {
             name={category.name}
             marg={16}
           />
-          <Select
+          <OrderSelectBox
             config={order}
             name={order.name}
             marg={16}
           />
-          <Select
+          <DateSelectBox
             config={date}
+            name={order.name}
             name={date.name}
           />
         </section>
@@ -38,7 +41,6 @@ function App() {
         <Prompt
           info={info}
         />
-        
         <Templates/>
       </main>
     </div>

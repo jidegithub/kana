@@ -1,6 +1,8 @@
 // import templatesApi from "../apis/templates";
-import template_data from "../../src/data/templates.json"
+import template_data from "../../src/data/templates.json";
+import { sortBy } from '../utils/arrayFilterer';
 // import chunk from 'lodash.chunk';
+
 
 export const fetchTemplates = () => {
   // return async (dispatch, getState) => {
@@ -44,8 +46,67 @@ export const searchTemplate = (allTemplates, searchParam) => {
   }
 };
 
-export const sortTemplate = (allTemp, filterParam) => {
+// export const sortTemplatePerNameOrder = (allTemplates, sortParam) => {
+//   // let toSortAsc = sortBy(allTemplates, { prop: "name", parser: (item) => item.toLowerCase() });
+//   // let toSortDesc = sortBy(allTemplates, { prop: "name", desc: true, parser: (item) => item.toLowerCase() });
+  
+//   return {
+//     type: "SORT_TEMPLATE_ORDER",
+//     payload: {
+//       sortParam: sortParam,
+//       sorted: sortParam === 'ascending' ? 
+//       sortBy(allTemplates, { prop: "name", parser: (item) => item.toLowerCase() }) : 
+//       sortBy(allTemplates, { prop: "name", desc: true, parser: (item) => item.toLowerCase() }),
+//     }
+//   }
+// }
 
+export const sortTemplatePerNameOrder = (allTemplates, order) => (dispatch) => {
+  const products = allTemplates.slice();
+  
+  if (order !== "") {
+    products.sort((a, b) =>
+      order === "ascending"
+        ? a.name > b.name
+          ? 1
+          : -1
+        : a.name < b.name
+          ? 1
+          : -1
+    );
+  } else {
+    products.sort((a, b) => (a.id > b.id ? 1 : -1));
+  }
+  dispatch({
+    type: "ORDER_TEMPLATES_BY_NAME",
+    payload: {
+      order: order,
+      items: products,
+    },
+  });
+
+
+  // return {
+  //   type: "SORT_TEMPLATE_ORDER",
+  //   payload: {
+  //     sortParam: sortParam,
+  //     sorted: sortParam === 'ascending' ?
+  //       sortBy(allTemplates, { prop: "name", parser: (item) => item.toLowerCase() }) :
+  //       sortBy(allTemplates, { prop: "name", desc: true, parser: (item) => item.toLowerCase() }),
+  //   }
+  // }
+}
+
+export const sortTemplatePerDate = (allTemplates, sortParam) => {
+  let toSortAsc = sortBy(allTemplates, { prop: "created", parser: (item) => new Date(item)});
+  let toSortDesc = sortBy(allTemplates, { prop: "created", desc: true, parser: (item) => new Date(item)});
+  return {
+    type: "SORT_TEMPLATE_DATE",
+    payload:{
+      sortParam: sortParam,
+      sorted: sortParam == "ascending" ? toSortAsc : toSortDesc
+    }
+  }
 }
 
 export const setSelectedTemplate = (name) => {

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const initState = { templates: [], filteredTemplates: [], searchParam: "", selectedTemplate: "All", templateFilterParam: {} };
+const initState = { templates: [], filteredTemplates: [], searchParam: "", selectedTemplate: "All", templateFilterParam: {}, order: "", dateCreated: "" };
 
 const templatesReducer = (state = initState, action) => {
   switch (action.type) {
@@ -17,6 +17,18 @@ const templatesReducer = (state = initState, action) => {
         filteredTemplates: action.payload.MatchedTemplates, 
         templateFilterParam: action.payload.templateFilterParam  
       };
+    case "ORDER_TEMPLATES_BY_NAME" :
+      return {
+        ...state, 
+        filteredTemplates: action.payload.items,
+        order: action.payload.order
+      }
+    case "SORT_TEMPLATE_DATE" :
+      return {
+        ...state, 
+        filteredTemplates: action.payload.sorted,
+        dateCreated: action.payload.sortParam
+      }
     case "SELECT_TEMPLATE":
       return { ...state, selectedTemplate: action.payload };
     default:
