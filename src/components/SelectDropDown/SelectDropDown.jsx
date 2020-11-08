@@ -22,7 +22,7 @@ function SelectDropDown({ props }) {
 
   useEffect(() => {
     AddOptionToListItemId()
-    console.log(dropDownArrow.current)
+    // console.log(dropDownArrow.current)
   }, [])
 
   // useEffect(() => {
@@ -36,11 +36,11 @@ function SelectDropDown({ props }) {
     // Add each list items id to the listItemsids array
     let ids = dropdownOptions.map(option => option.id);
     setListItemIds(ids)
-    console.log(listItemIds)
+    // console.log(listItemIds)
   }
 
   const handleOnSelect = (e) => {
-    console.log(e)
+    // console.log(e)
     setSelectedListItem(e);
     closeList();
   }
@@ -125,28 +125,6 @@ function SelectDropDown({ props }) {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <>
       <ul className="dropdown">
@@ -165,12 +143,24 @@ function SelectDropDown({ props }) {
           Option 1
         </li>
 
+        {/* <svg xmlns="http://www.w3.org/2000/svg" 
+          className=" dropdown__arrow icon icon-tabler icon-tabler-chevron-down" 
+          width="20" height="25" 
+          viewBox="0 0 10 5" strokeWidth="2" 
+          stroke="currentColor" fill="#b3c" 
+          strokeLinecap="round" strokeLinejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" />
+          <title>Open drop down</title>
+          <polyline points="6 9 12 15 18 9" />
+        </svg> */}
+
         <svg
           ref={dropDownArrow}
           className="dropdown__arrow"
           width="10"
           height="5"
           viewBox="0 0 10 5"
+          fill="#aca7a7"
           fillRule="evenodd"
         >
           <title>Open drop down</title>

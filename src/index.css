@@ -1,12 +1,13 @@
 :root{
   --primary-color: #f4f1f1;
   --primary-color-text: #3F3E3E;
+  --primary-color-lightdark: #aca7a7;
   --secondary-color-text: #353048;
   --margin-top-2: 2rem;
   --margin-bottom-2: 2rem;
   --margin-left-2: 2rem;
   --margin-right-2: 2rem;
-  --form-element-height: 2rem;
+  --form-element-height: 2.35rem;
   --line-height1-25: 1.25; 
   --padding-l1-6: 1.6rem;
   --padding-left0-5: 0.5rem;

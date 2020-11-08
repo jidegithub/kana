@@ -16,6 +16,9 @@
 				outline: 0;
 				border-color: var(--primary-color);
 			}
+			&::placeholder{
+				font-size: 13px;
+			}
 		}
 		&-icon-container{
 			position: absolute;
