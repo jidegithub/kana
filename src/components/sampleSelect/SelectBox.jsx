@@ -2,14 +2,14 @@ import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import { filterTemplatesParams, setSelectedTemplate } from '../../actions';
 
-function SelectBox({ config, name, marg, filterTemplatesParams, setSelectedTemplate }) {
-  
+function SelectBox({ config, name, marg, filterTemplatesParams, setSelectedTemplate, alltemp}) {
+
   const [value, setValue] = useState({})
 
   const handleOnchange = (e) => {
     const {value} = e.target
     setValue({value})
-    filterTemplatesParams({[name]: value})
+    filterTemplatesParams(alltemp, {[name]: value})
   }
 
   const currentTemplate = () =>{
@@ -40,10 +40,13 @@ function SelectBox({ config, name, marg, filterTemplatesParams, setSelectedTempl
   )
 };
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return state;
-}
+const mapStateToProps = (state) => ({
+  alltemp: state.templates.templates,
+  filteredTemplates: state.templates.filteredTemplates,
+  filterParam: state.templates.templateFilterParam,
+  console: console.log(state)
+  // return state;
+})
 
 export default connect(mapStateToProps, { filterTemplatesParams, setSelectedTemplate})(SelectBox);
 

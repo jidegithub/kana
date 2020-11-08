@@ -13,7 +13,10 @@ const templatesReducer = (state = initState, action) => {
         searchParam: action.payload.searchParam
       }
     case "TEMPLATES_FILTER_PARAM":
-      return { ...state, templateFilterParam: action.payload.param  };
+      return { ...state,
+        filteredTemplates: action.payload.templates, 
+        templateFilterParam: action.payload.templateFilterParam  
+      };
     case "SELECT_TEMPLATE":
       return { ...state, selectedTemplate: action.payload };
     default:

@@ -19,11 +19,15 @@ export const fetchTemplates = () => {
   }
 };
 
-export const filterTemplatesParams = (param) => {
+export const filterTemplatesParams = (alltemp, templateFilterParam) => {
   return{
     type: "TEMPLATES_FILTER_PARAM",
     payload: {
-      param
+      templateFilterParam: templateFilterParam,
+      templates: templateFilterParam.category === "All" ? alltemp : alltemp.filter((template) => {
+        // return typeof template == "string" ? template == templateFilterParam.value : category.indexOf(templateFilterParam.value) >= 0;
+        return template.category.indexOf(templateFilterParam.category) > -1;
+      })
     }
   }
 };
