@@ -18,7 +18,7 @@ function OrderSelectBox({ config, name, marg, allTemplates, filteredTemplates, s
 
   return (
     <select style={{ marginRight: marg}}
-      name="order"
+      name={name}
       onChange={handleOnchange}
       value={value}
     >
@@ -36,8 +36,7 @@ function OrderSelectBox({ config, name, marg, allTemplates, filteredTemplates, s
 const mapStateToProps = (state) => ({
   allTemplates: state.templates.templates,
   filteredTemplates: state.templates.filteredTemplates,
-  sort: state.templates.order,
-  console: console.log(state)
+  order: state.templates.order,
 })
 
 export default connect(mapStateToProps, {sortTemplatePerNameOrder})(OrderSelectBox);

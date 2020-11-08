@@ -46,21 +46,6 @@ export const searchTemplate = (allTemplates, searchParam) => {
   }
 };
 
-// export const sortTemplatePerNameOrder = (allTemplates, sortParam) => {
-//   // let toSortAsc = sortBy(allTemplates, { prop: "name", parser: (item) => item.toLowerCase() });
-//   // let toSortDesc = sortBy(allTemplates, { prop: "name", desc: true, parser: (item) => item.toLowerCase() });
-  
-//   return {
-//     type: "SORT_TEMPLATE_ORDER",
-//     payload: {
-//       sortParam: sortParam,
-//       sorted: sortParam === 'ascending' ? 
-//       sortBy(allTemplates, { prop: "name", parser: (item) => item.toLowerCase() }) : 
-//       sortBy(allTemplates, { prop: "name", desc: true, parser: (item) => item.toLowerCase() }),
-//     }
-//   }
-// }
-
 export const sortTemplatePerNameOrder = (allTemplates, order) => (dispatch) => {
   const products = allTemplates.slice();
   
@@ -84,29 +69,20 @@ export const sortTemplatePerNameOrder = (allTemplates, order) => (dispatch) => {
       items: products,
     },
   });
-
-
-  // return {
-  //   type: "SORT_TEMPLATE_ORDER",
-  //   payload: {
-  //     sortParam: sortParam,
-  //     sorted: sortParam === 'ascending' ?
-  //       sortBy(allTemplates, { prop: "name", parser: (item) => item.toLowerCase() }) :
-  //       sortBy(allTemplates, { prop: "name", desc: true, parser: (item) => item.toLowerCase() }),
-  //   }
-  // }
 }
 
-export const sortTemplatePerDate = (allTemplates, sortParam) => {
-  let toSortAsc = sortBy(allTemplates, { prop: "created", parser: (item) => new Date(item)});
-  let toSortDesc = sortBy(allTemplates, { prop: "created", desc: true, parser: (item) => new Date(item)});
-  return {
+export const sortTemplatePerDate = (allTemplates, sortParam) => (dispatch) => {
+  // let toSortAsc = sortBy(allTemplates, { prop: "created", parser: (item) => new Date(item)});
+  // let toSortDesc = sortBy(allTemplates, { prop: "created", desc: true, parser: (item) => new Date(item)});
+  dispatch({
     type: "SORT_TEMPLATE_DATE",
     payload:{
       sortParam: sortParam,
-      sorted: sortParam == "ascending" ? toSortAsc : toSortDesc
+      sorted: sortParam == "ascending" ? 
+      sortBy(allTemplates, { prop: "created", parser: (item) => new Date(item) }) : 
+      sortBy(allTemplates, { prop: "created", desc: true, parser: (item) => new Date(item) })
     }
-  }
+  })
 }
 
 export const setSelectedTemplate = (name) => {
