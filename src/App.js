@@ -32,7 +32,6 @@ function App() {
           />
           <DateSelectBox
             config={date}
-            name={order.name}
             name={date.name}
           />
         </section>

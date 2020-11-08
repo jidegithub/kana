@@ -1,6 +1,6 @@
 // import templatesApi from "../apis/templates";
 import template_data from "../../src/data/templates.json";
-import { sortBy } from '../utils/arrayFilterer';
+// import { sortBy } from '../utils/arrayFilterer';
 // import chunk from 'lodash.chunk';
 
 

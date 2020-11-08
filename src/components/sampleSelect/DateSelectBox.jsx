@@ -18,7 +18,7 @@ function DateSelectBox({ config, name, allTemplates, filteredTemplates, sortTemp
 
   return (
     <select
-      name="date"
+      name={name}
       onChange={handleOnchange}
       value={value}
     >

@@ -14,7 +14,7 @@ function SelectBox({ config, marg, filterTemplatesParams, setSelectedTemplate, f
 
   useEffect(() => {
     setSelectedTemplate(value);
-  }, [value])
+  })
 
   return (
     <select style={{ marginRight: marg}}

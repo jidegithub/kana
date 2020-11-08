@@ -7,7 +7,7 @@ function CurrentTemplatesInfo({ setSelectedTemplate, selected, templates}) {
 
   useEffect(() => {
     setSelectedTemplate({value: "All"})
-  }, [])
+  })
 
   return (
     <div className="templatesinfo flex flex-justify-between">
