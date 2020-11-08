@@ -22,86 +22,107 @@ function SelectDropDown({ props }) {
 
   useEffect(() => {
     AddOptionToListItemId()
-  }, [listItemIds])
+    console.log(dropDownArrow.current)
+  }, [])
+
+  // useEffect(() => {
+  //   document.body.addEventListener("click", onClickOutside);
+  //   return () => {
+  //     document.removeEventListener("click", onClickOutside);
+  //   }
+  // }, [])
 
   const AddOptionToListItemId = () => {
     // Add each list items id to the listItemsids array
-    // let ids = dropdownOptions.map(option => option.id);
-    // setListItemIds(ids)
+    let ids = dropdownOptions.map(option => option.id);
+    setListItemIds(ids)
     console.log(listItemIds)
   }
 
   const handleOnSelect = (e) => {
     console.log(e)
-    // setSelectedListItem(e);
-    // closeList();
+    setSelectedListItem(e);
+    closeList();
   }
 
 
-  const toggleListVisibility = (e) => {
-    console.log(e)
-  }
-
-  // const setSelectedListItem = (e) => {
-  //   let selectedTextToAppend = document.createTextNode(e.target.innerText);
-  //   dropdownSelectedNode.innerHTML = null;
-  //   dropdownSelectedNode.appendChild(selectedTextToAppend);
+  // const toggleListVisibility = (e) => {
+  //   console.log(e)
+  //   AddOptionToListItemId()
   // }
 
-  // const closeList = () => {
-  //   list.classList.remove("open");
-  //   dropdownArrow.classList.remove("expanded");
-  //   listContainer.setAttribute("aria-expanded", false);
-  // }
+  // const onClickOutside = e => {
+  //   // const { onClose } = this.props;
+  //   const element = e.target;
 
-  // const toggleListVisibility = (e) =>  {
-  //   let openDropDown = SPACEBAR_KEY_CODE.includes(e.keyCode) || e.keyCode === ENTER_KEY_CODE;
-
-  //   if (e.keyCode === ESCAPE_KEY_CODE) {
+  //   if (this.list.current && !this.list.current.contains(element)) {
+  //     e.preventDefault();
+  //     e.stopPropagation();
   //     closeList();
   //   }
+  // };
 
-  //   if (e.type === "click" || openDropDown) {
-  //     list.classList.toggle("open");
-  //     dropdownArrow.classList.toggle("expanded");
-  //     listContainer.setAttribute(
-  //       "aria-expanded",
-  //       list.classList.contains("open")
-  //     );
-  //   }
+  const setSelectedListItem = (e) => {
+    let selectedTextToAppend = document.createTextNode(e.target.innerText);
+    dropDownSelectedNode.current.innerHTML = null;
+    dropDownSelectedNode.current.appendChild(selectedTextToAppend);
+  }
 
-  //   if (e.keyCode === DOWN_ARROW_KEY_CODE) {
-  //     focusNextListItem(DOWN_ARROW_KEY_CODE);
-  //   }
+  const closeList = () => {
+    list.current.classList.remove("open");
+    dropDownArrow.current.classList.remove("expanded");
+    listContainer.current.setAttribute("aria-expanded", false);
+  }
 
-  //   if (e.keyCode === UP_ARROW_KEY_CODE) {
-  //     focusNextListItem(UP_ARROW_KEY_CODE);
-  //   }
-  // }
+  const toggleListVisibility = (e) =>  {
+    AddOptionToListItemId()
+    let openDropDown = SPACEBAR_KEY_CODE.includes(e.keyCode) || e.keyCode === ENTER_KEY_CODE;
 
-  // const focusNextListItem = (direction) => {
-  //   const activeElementId = document.activeElement.id;
-  //   if (activeElementId === "dropdown__selected") {
-  //     document.querySelector(`#${listItemIds[0]}`).focus();
-  //   } else {
-  //     const currentActiveElementIndex = listItemIds.indexOf(activeElementId);
-  //     if (direction === DOWN_ARROW_KEY_CODE) {
-  //       const currentActiveElementIsNotLastItem =
-  //         currentActiveElementIndex < listItemIds.length - 1;
-  //       if (currentActiveElementIsNotLastItem) {
-  //         const nextListItemId = listItemIds[currentActiveElementIndex + 1];
-  //         document.querySelector(`#${nextListItemId}`).focus();
-  //       }
-  //     } else if (direction === UP_ARROW_KEY_CODE) {
-  //       const currentActiveElementIsNotFirstItem =
-  //         currentActiveElementIndex > 0;
-  //       if (currentActiveElementIsNotFirstItem) {
-  //         const nextListItemId = listItemIds[currentActiveElementIndex - 1];
-  //         document.querySelector(`#${nextListItemId}`).focus();
-  //       }
-  //     }
-  //   }
-  // }
+    if (e.keyCode === ESCAPE_KEY_CODE) {
+      closeList();
+    }
+
+    if (e.type === "click" || openDropDown) {
+      list.current.classList.toggle("open");
+      dropDownArrow.current.classList.toggle("expanded");
+      listContainer.current.setAttribute(
+        "aria-expanded",
+        list.current.classList.contains("open")
+      );
+    }
+
+    if (e.keyCode === DOWN_ARROW_KEY_CODE) {
+      focusNextListItem(DOWN_ARROW_KEY_CODE);
+    }
+
+    if (e.keyCode === UP_ARROW_KEY_CODE) {
+      focusNextListItem(UP_ARROW_KEY_CODE);
+    }
+  }
+
+  const focusNextListItem = (direction) => {
+    const activeElementId = document.activeElement.id;
+    if (activeElementId === "dropdown__selected") {
+      document.querySelector(`#${listItemIds[0]}`).focus();
+    } else {
+      const currentActiveElementIndex = listItemIds.indexOf(activeElementId);
+      if (direction === DOWN_ARROW_KEY_CODE) {
+        const currentActiveElementIsNotLastItem =
+          currentActiveElementIndex < listItemIds.length - 1;
+        if (currentActiveElementIsNotLastItem) {
+          const nextListItemId = listItemIds[currentActiveElementIndex + 1];
+          document.querySelector(`#${nextListItemId}`).focus();
+        }
+      } else if (direction === UP_ARROW_KEY_CODE) {
+        const currentActiveElementIsNotFirstItem =
+          currentActiveElementIndex > 0;
+        if (currentActiveElementIsNotFirstItem) {
+          const nextListItemId = listItemIds[currentActiveElementIndex - 1];
+          document.querySelector(`#${nextListItemId}`).focus();
+        }
+      }
+    }
+  }
 
 
 
@@ -182,5 +203,5 @@ function SelectDropDown({ props }) {
 
 // }
 
-export default SelectDropDown
+export default SelectDropDown;
 

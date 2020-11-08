@@ -1,11 +1,11 @@
 import './App.scss';
 import Prompt from './components/Prompt/Prompt';
-import Select from './components/sampleSelect/SelectBox';
+// import Select from './components/sampleSelect/SelectBox';
 import SearchBox from './components/SearchBox/SearchBox';
 import Templates from './components/Templates/Templates';
-// import SelectDropDown from './components/SelectDropDown/SelectDropDown';
-import OrderSelectBox from './components/sampleSelect/OrderSelectBox';
-import DateSelectBox from './components/sampleSelect/DateSelectBox';
+import SelectDropDown from './components/SelectDropDown/SelectDropDown';
+// import OrderSelectBox from './components/sampleSelect/OrderSelectBox';
+// import DateSelectBox from './components/sampleSelect/DateSelectBox';
 
 function App() {
   const category = {name: "category", options: ["All", "Education", "E-commerce", "Health"]};
@@ -20,7 +20,7 @@ function App() {
           <SearchBox/>
         </section>
         <section>
-          <Select
+          {/* <Select
             config={category}
             name={category.name}
             marg={16}
@@ -33,7 +33,8 @@ function App() {
           <DateSelectBox
             config={date}
             name={date.name}
-          />
+          /> */}
+          <SelectDropDown/>
         </section>
       </header>
       <main className="main">
