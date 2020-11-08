@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setSelectedTemplate } from '../../actions';
 import "./CurrentInfoTemplates.scss"
 
-function CurrentTemplatesInfo({ setSelectedTemplate, selectedTemplate, templates}) {
+function CurrentTemplatesInfo({ setSelectedTemplate, selected, templates}) {
 
   useEffect(() => {
     setSelectedTemplate({value: "All"})
@@ -11,15 +11,16 @@ function CurrentTemplatesInfo({ setSelectedTemplate, selectedTemplate, templates
 
   return (
     <div className="templatesinfo flex flex-justify-between">
-      <p>{selectedTemplate.value} <span>Templates</span></p>
+      <p>{selected.value} <span>Templates</span></p>
       <p>{templates.length ? templates.length : 0} found</p>
     </div>
   )
 };
 
-const mapStateToProps = (state) => {
-  return state;
-};
+const mapStateToProps = (state) => ({
+  selected: state.templates.selectedTemplate,
+  templates: state.templates.filteredTemplates
+});
 
 export default connect(mapStateToProps, {setSelectedTemplate})(CurrentTemplatesInfo);
 

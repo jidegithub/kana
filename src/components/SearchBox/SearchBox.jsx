@@ -10,7 +10,7 @@ function SearchBox(props) {
   const handleOnChange = e => {
     const { value } = e.target;
     setParam(value)
-    props.searchTemplate(value)
+    props.searchTemplate(props.alltemp, value)
     console.log(e.target.value)
   }
 
@@ -41,10 +41,13 @@ function SearchBox(props) {
   )
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => ({
+  alltemp: state.templates.templates,
+  filteredTemplates: state.templates.filteredTemplates,
+  searchParam:state.searchParam
   // console.log(state)
-  return state;
-}
+  // return state;
+})
 
 export default connect(mapStateToProps ,{searchTemplate})(SearchBox);
 

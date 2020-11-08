@@ -28,11 +28,14 @@ export const filterTemplatesParams = (param) => {
   }
 };
 
-export const searchTemplate = (param) => {
+export const searchTemplate = (alltemp, searchParam) => {
   return {
     type: "SEARCH_TEMPLATE",
     payload: {
-      param
+      searchParam: searchParam,
+      templates: searchParam === "" ? alltemp : alltemp.filter(
+        temp => temp.name.toLowerCase().includes(searchParam.toLowerCase())
+      )
     }
   }
 };

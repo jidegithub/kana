@@ -44,9 +44,9 @@ function Templates(props) {
   )
 };
 
-const mapStateToProps = (state) => {
-  return state;
-}
+const mapStateToProps = (state) => ({
+  templates: state.templates.filteredTemplates
+})
 
 export default connect(mapStateToProps, { fetchTemplates })(Templates);
 

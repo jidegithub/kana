@@ -41,7 +41,7 @@ function SelectBox({ config, name, marg, filterTemplatesParams, setSelectedTempl
 };
 
 const mapStateToProps = (state) => {
-  // console.log(state)
+  console.log(state)
   return state;
 }
 
