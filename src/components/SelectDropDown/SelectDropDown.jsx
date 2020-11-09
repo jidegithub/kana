@@ -21,11 +21,9 @@ function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplate
   const dropDownSelectedNode = useRef(null)
 
   const [listItemIds, setListItemIds] = useState([])
-  const [selected, setSelected] = useState("")
 
   useEffect(() => {
     AddOptionToListItemId()
-    // console.log(dropDownArrow.current)
   }, [])
 
   // useEffect(() => {
@@ -39,7 +37,6 @@ function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplate
     // Add each list items id to the listItemsids array
     let ids = dropdownOptions.map(option => option.id);
     setListItemIds(ids)
-    // console.log(listItemIds)
   }
 
   const handleOnSelect = (e) => {
@@ -50,7 +47,6 @@ function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplate
   }
 
   const toggleAction = (selected) => {
-    console.log("executed fine")
     switch (label) {
       case "Category":
         return (
@@ -81,7 +77,6 @@ function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplate
     let selectedTextToAppend = document.createTextNode(e.target.innerText);
     dropDownSelectedNode.current.innerHTML = null;
     dropDownSelectedNode.current.appendChild(selectedTextToAppend);
-    setSelected(selectedTextToAppend.textContent)
   }
 
   const closeList = () => {

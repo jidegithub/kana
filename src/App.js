@@ -1,20 +1,12 @@
 import './App.scss';
 import Prompt from './components/Prompt/Prompt';
-// import Select from './components/sampleSelect/SelectBox';
 import SearchBox from './components/SearchBox/SearchBox';
 import Templates from './components/Templates/Templates';
 import SelectDropDown from './components/SelectDropDown/SelectDropDown';
-// import OrderSelectBox from './components/sampleSelect/OrderSelectBox';
-// import DateSelectBox from './components/sampleSelect/DateSelectBox';
-// import { sortTemplatePerDate, sortTemplatePerNameOrder} from '../src/actions'
 
 function App() {
-  // const category = {name: "category", options: ["All", "Education", "E-commerce", "Health"]};
-  // const order = {name: "order", options: ["default", "ascending", "descending"]};
-  // const date = {name:"date", options: ["default", "ascending", "descending" ]};
   const info = "Tada! Get started with free template. Can't find what you are looking for? Search from the 1000+ available templates"
-
-  const category_mega = [{name:"Education", id: 63}, {name:"E-commerce", id:15}, {name:"Health", id:447}];
+  const category_mega = [{name: "all", id: 582226},{name:"Education", id: 63}, {name:"E-commerce", id:15}, {name:"Health", id:447}];
   const order_mega = [{name: "ascending", id: 9652}, {name: "descending", id: 5452}];
   const date_mega = [{ name: "ascending", id: 9954 }, { name: "descending", id: 333 }];
 
@@ -25,20 +17,6 @@ function App() {
           <SearchBox/>
         </section>
         <section className="select-boxes">
-          {/* <Select
-            config={category}
-            name={category.name}
-            marg={16}
-          />
-          <OrderSelectBox
-            config={order}
-            name={order.name}
-            marg={16}
-          />
-          <DateSelectBox
-            config={date}
-            name={date.name}
-          /> */}
           <SelectDropDown
             dropdownOptions={category_mega}
             label="Category"
@@ -60,9 +38,7 @@ function App() {
         </section>
       </header>
       <main className="main">
-        <Prompt
-          info={info}
-        />
+        <Prompt info={info}/>
         <Templates/>
       </main>
     </div>

@@ -15,7 +15,8 @@ const templatesReducer = (state = initState, action) => {
     case "TEMPLATES_FILTER_PARAM":
       return { ...state,
         filteredTemplates: action.payload.MatchedTemplates, 
-        templateFilterParam: action.payload.templateFilterParam  
+        templateFilterParam: action.payload.templateFilterParam, 
+        console: console.log("recieved parameter") 
       };
     case "ORDER_TEMPLATES_BY_NAME" :
       return {

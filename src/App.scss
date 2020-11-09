@@ -6,7 +6,7 @@
 }
 .App header.header{
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 2.182rem;
 }
@@ -21,4 +21,24 @@ section.select-boxes{
 }
 .flex-justify-between{
   justify-content: space-between;
+}
+
+@media screen and (max-width: 960px){
+  .App header.header{
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 2.182rem;
+  }
+  section.select-boxes{
+    margin-top: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 500px){
+  section.select-boxes{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.6rem;
+  }
 }

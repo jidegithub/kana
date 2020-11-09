@@ -24,7 +24,7 @@ function SearchBox({ searchTemplate, allTemplates, filteredTemplates}) {
         onChange={handleOnChange}
         value={param}
       className="search-box--input block-display appearance-none px-2 font-medium w-full border border-gray-200 text-gray-900 leading-tight overflow-hidden"
-        placeholder="Search Templates" type="text" autoComplete="off"/>
+        placeholder="&nbsp;&nbsp;Search Templates" type="text" autoComplete="off"/>
 
       <div className="search-box-icon-container">
         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" className="icon icon-tabler icon-tabler-search" width="21" height="21" viewBox="0 0 24 24" strokeWidth="2" stroke="#cbc8c8" data-icon="search" role="img" fill="none" strokeLinecap="round" strokeLinejoin="round">

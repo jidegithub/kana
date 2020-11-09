@@ -9,7 +9,7 @@
 			height: var(--form-element-height);
 			color: #1a202c;
 			line-height: var(--line-height1-25);
-			padding: 0 0 0 var(--padding-l1-6);
+			// padding: 0 0 0 var(--padding-l1-6);
 			display: block;
 			border: 1px solid var(--primary-color);
 			&:focus{
@@ -17,7 +17,7 @@
 				border-color: var(--primary-color);
 			}
 			&::placeholder{
-				font-size: 13px;
+				font-size: .8rem;
 			}
 		}
 		&-icon-container{

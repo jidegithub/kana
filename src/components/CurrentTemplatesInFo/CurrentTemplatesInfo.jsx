@@ -1,13 +1,13 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import { setSelectedTemplate } from '../../actions';
 import "./CurrentInfoTemplates.scss"
 
 function CurrentTemplatesInfo({ setSelectedTemplate, selected, templates}) {
 
-  useEffect(() => {
-    setSelectedTemplate("All")
-  }, [])
+  // useEffect(() => {
+  //   setSelectedTemplate("All")
+  // }, [])
 
   return (
     <div className="templatesinfo flex flex-justify-between">

@@ -26,10 +26,11 @@ export const filterTemplatesParams = (allTemplates, templateFilterParam) => {
     type: "TEMPLATES_FILTER_PARAM",
     payload: {
       templateFilterParam: templateFilterParam,
-      MatchedTemplates: templateFilterParam.category === "All" ? allTemplates : allTemplates.filter((template) => (
+      MatchedTemplates: templateFilterParam.category === "all" ? allTemplates : allTemplates.filter((template) => (
         // return typeof template == "string" ? template == templateFilterParam.value : category.indexOf(templateFilterParam.value) >= 0;
         template.category.indexOf(templateFilterParam.category) > -1
-      ))
+      )),
+      console: console.log(templateFilterParam)
     }
   }
 };
