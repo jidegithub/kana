@@ -1,4 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
+import Proptypes from 'prop-types'
+import { connect } from 'react-redux';
+import { sortTemplatePerDate, sortTemplatePerNameOrder, filterTemplatesParams } from '../../actions'
 import {
   SPACEBAR_KEY_CODE,
   ENTER_KEY_CODE,
@@ -7,10 +10,9 @@ import {
   ESCAPE_KEY_CODE
 } from "../../utils/keyboardCodes"
 import "./SelectDropDown.scss"
-// import PropTypes from 'prop-types'
 
-function SelectDropDown({ props }) {
-  const dropdownOptions = [{ name: "gogo", id: 52 }, { name: "anime", id: 63 }, { name: "blow", id: 15 }];
+
+function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplates, allTemplates, filterTemplatesParams, sortTemplatePerNameOrder, sortTemplatePerDate }) {
 
   const list = useRef(null);
   const listContainer = useRef(null)
@@ -19,6 +21,7 @@ function SelectDropDown({ props }) {
   const dropDownSelectedNode = useRef(null)
 
   const [listItemIds, setListItemIds] = useState([])
+  const [selected, setSelected] = useState("")
 
   useEffect(() => {
     AddOptionToListItemId()
@@ -40,16 +43,26 @@ function SelectDropDown({ props }) {
   }
 
   const handleOnSelect = (e) => {
-    // console.log(e)
+    const {innerText} = e.target
+    toggleAction(innerText)
     setSelectedListItem(e);
     closeList();
   }
 
 
-  // const toggleListVisibility = (e) => {
-  //   console.log(e)
-  //   AddOptionToListItemId()
-  // }
+  const toggleAction = (selected) => {
+    console.log("executed fine")
+    switch (label) {
+      case "Category":
+        return filterTemplatesParams(filteredTemplates, { category: selected })
+      case "Order":
+        return sortTemplatePerNameOrder(filteredTemplates, selected)
+      case "Date":
+        return sortTemplatePerDate(allTemplates, selected)
+      default:
+        return null
+    }
+  }
 
   // const onClickOutside = e => {
   //   // const { onClose } = this.props;
@@ -66,6 +79,7 @@ function SelectDropDown({ props }) {
     let selectedTextToAppend = document.createTextNode(e.target.innerText);
     dropDownSelectedNode.current.innerHTML = null;
     dropDownSelectedNode.current.appendChild(selectedTextToAppend);
+    setSelected(selectedTextToAppend.textContent)
   }
 
   const closeList = () => {
@@ -129,7 +143,7 @@ function SelectDropDown({ props }) {
     <>
       <ul className="dropdown">
         <li id="dropdown-label" className="dropdown__label">
-          Category
+          {label}
         </li>
         <li
           onClick={toggleListVisibility}
@@ -140,7 +154,7 @@ function SelectDropDown({ props }) {
           id="dropdown__selected"
           tabIndex="0"
         >
-          Option 1
+          {defaultValue}
         </li>
 
         {/* <svg xmlns="http://www.w3.org/2000/svg" 
@@ -189,9 +203,25 @@ function SelectDropDown({ props }) {
   )
 };
 
-// SelectDropDown.propTypes = {
+SelectDropDown.propTypes = {
+  dropdownOptions: Proptypes.array.isRequired,
+  label: Proptypes.string.isRequired,
+  defaultValue: Proptypes.string.isRequired
+}
 
-// }
+const mapStateToprops = (state) => ({
+  allTemplates: state.templates.templates,
+  filteredTemplates: state.templates.filteredTemplates,
+  order: state.templates.order,
+  dateCreated: state.dateCreated,
+  selectedTemplate: state.templates.selectedTemplate
+})
 
-export default SelectDropDown;
+export default connect(mapStateToprops, {
+  sortTemplatePerNameOrder,
+  sortTemplatePerDate,
+  filterTemplatesParams
+})(SelectDropDown);
+
+
 

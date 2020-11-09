@@ -101,4 +101,3 @@ export const setSelectedTemplate = (name) => {
     payload: name
   }
 };
-
