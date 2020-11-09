@@ -12,7 +12,7 @@ import {
 import "./SelectDropDown.scss"
 
 
-function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplates, allTemplates, filterTemplatesParams, sortTemplatePerNameOrder, sortTemplatePerDate, setSelectedTemplate }) {
+function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplates, allTemplates, filterTemplatesParams, sortTemplatePerNameOrder, sortTemplatePerDate, setSelectedTemplate, emptyFields }) {
 
   const list = useRef(null);
   const listContainer = useRef(null)

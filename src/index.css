@@ -34,8 +34,14 @@ body {
 .flex-justify-center{
   justify-content: center;
 }
+.flex-justify-between{
+  justify-content: space-between;
+}
 .items-center{
   align-items: center;
+}
+.flex-wrap-wrap{
+  flex-wrap: wrap;
 }
 @media (max-width: 900px) {
   html { font-size: 15px; }

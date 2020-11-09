@@ -1,11 +1,28 @@
 .main-info-box{
-  background: antiquewhite;
+  font-size: .9rem;
+  background: rgba(250, 235, 215, 0.691);
   margin: 0 2.182rem 3rem 2.182rem;
+  & p{
+    padding: .2rem;
+  }
+  & svg{
+    color: #ff9900;
+    margin-right: .5rem;
+  }
 }
 
 @media (max-width: 780px) {
   .main-info-box{
     text-align: center;
-    font-size: .8rem;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .main-info-box{
+    
+    & p{
+      flex-direction: column;
+      padding: .6rem;
+    }
   }
 }

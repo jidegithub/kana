@@ -100,16 +100,18 @@
   max-height: 15rem;
 }
 
-@media screen and (max-width: 960px){
-  .dropdown:nth-child(2) {
-    padding: 0;
-    margin: 0 10px;
+@media screen and (max-width: 1000px){
+  .dropdown {
+    &:nth-child(2){
+      margin: 0 .7rem;
+    }
   }
 }
 
 @media screen and (max-width: 500px){
-  .dropdown:nth-child(2) {
-    padding: 0;
-    margin: 2rem 0;
+  .dropdown {
+    &:nth-child(2){
+      margin: 1.5rem 0;
+    }
   }
 }

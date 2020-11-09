@@ -5,40 +5,46 @@
   margin: var(--margin-tblr);
 }
 .App header.header{
-  display: flex;
-  // flex-wrap: wrap;
-  justify-content: space-between;
   margin: 0 2.182rem;
 }
 .App main.main{
   margin-top: 4rem;
 }
-section.select-boxes{
+.select-container{
+  & small{
+    color: var(--primary-color-lightdark);
+    margin-right: .6rem;
+  }
+}
+.select-boxes{
   display: inline-flex;
 }
-.flex-wrap-wrap{
-  flex-wrap: wrap;
-}
-.flex-justify-between{
-  justify-content: space-between;
-}
 
-@media screen and (max-width: 960px){
+@media screen and (max-width: 1000px){
   .App header.header{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin: 0 2.182rem;
   }
-  section.select-boxes{
-    margin-top: 1.6rem;
+  .select-container{
+    display: grid;
+  & span{
+    display: flex;
+    justify-content: center;
+    & small{
+      margin: .9rem 0;
+    }
+  }
+}
+  .select-boxes{
+    margin-top: 1.2rem;
   }
 }
 
 @media screen and (max-width: 500px){
-  section.select-boxes{
+  .select-boxes{
     display: flex;
     flex-direction: column;
-    margin-top: 1.6rem;
   }
 }
