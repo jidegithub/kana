@@ -6,12 +6,12 @@ import "./CurrentInfoTemplates.scss"
 function CurrentTemplatesInfo({ setSelectedTemplate, selected, templates}) {
 
   useEffect(() => {
-    setSelectedTemplate({value: "All"})
+    setSelectedTemplate("All")
   }, [])
 
   return (
     <div className="templatesinfo flex flex-justify-between">
-      <p>{selected.value} <span>Templates</span></p>
+      <p>{selected} <span>Templates</span></p>
       <p>{templates.length ? templates.length : 0} found</p>
     </div>
   )

@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import Proptypes from 'prop-types'
 import { connect } from 'react-redux';
-import { sortTemplatePerDate, sortTemplatePerNameOrder, filterTemplatesParams } from '../../actions'
+import { sortTemplatePerDate, sortTemplatePerNameOrder, filterTemplatesParams, setSelectedTemplate } from '../../actions'
 import {
   SPACEBAR_KEY_CODE,
   ENTER_KEY_CODE,
@@ -12,7 +12,7 @@ import {
 import "./SelectDropDown.scss"
 
 
-function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplates, allTemplates, filterTemplatesParams, sortTemplatePerNameOrder, sortTemplatePerDate }) {
+function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplates, allTemplates, filterTemplatesParams, sortTemplatePerNameOrder, sortTemplatePerDate, setSelectedTemplate }) {
 
   const list = useRef(null);
   const listContainer = useRef(null)
@@ -49,12 +49,14 @@ function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplate
     closeList();
   }
 
-
   const toggleAction = (selected) => {
     console.log("executed fine")
     switch (label) {
       case "Category":
-        return filterTemplatesParams(filteredTemplates, { category: selected })
+        return (
+          filterTemplatesParams(filteredTemplates, { category: selected }),
+          setSelectedTemplate(selected)
+        ) 
       case "Order":
         return sortTemplatePerNameOrder(filteredTemplates, selected)
       case "Date":
@@ -190,12 +192,6 @@ function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplate
                 className="dropdown__list-item" tabIndex="0">
                 {option.name}
               </li>)}
-            {/* <li ref={listItems} className="dropdown__list-item" tabIndex="0" id="option-1">
-              Option 1
-            </li>
-            <li ref={listItems} className="dropdown__list-item" tabIndex="0" id="option-2">
-              Option 2 is really longgggggggggggggggg
-            </li> */}
           </ul>
         </li>
       </ul>
@@ -220,7 +216,8 @@ const mapStateToprops = (state) => ({
 export default connect(mapStateToprops, {
   sortTemplatePerNameOrder,
   sortTemplatePerDate,
-  filterTemplatesParams
+  filterTemplatesParams,
+  setSelectedTemplate
 })(SelectDropDown);
 
 

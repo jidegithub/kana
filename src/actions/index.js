@@ -22,7 +22,7 @@ export const fetchTemplates = () => {
 };
 
 export const filterTemplatesParams = (allTemplates, templateFilterParam) => {
-  return{
+  return {
     type: "TEMPLATES_FILTER_PARAM",
     payload: {
       templateFilterParam: templateFilterParam,
@@ -48,7 +48,7 @@ export const searchTemplate = (allTemplates, searchParam) => {
 
 export const sortTemplatePerNameOrder = (allTemplates, order) => (dispatch) => {
   const templates = allTemplates.slice();
-  
+
   if (order !== "") {
     templates.sort((a, b) =>
       order === "ascending"
@@ -88,7 +88,7 @@ export const sortTemplatePerDate = (allTemplates, dateCreated) => (dispatch) => 
   }
   dispatch({
     type: "SORT_TEMPLATE_DATE",
-    payload:{
+    payload: {
       dateCreated: dateCreated,
       items: templates
     }

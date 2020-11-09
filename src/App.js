@@ -14,7 +14,7 @@ function App() {
   // const date = {name:"date", options: ["default", "ascending", "descending" ]};
   const info = "Tada! Get started with free template. Can't find what you are looking for? Search from the 1000+ available templates"
 
-  const category_mega = [{name:"education", id: 63}, {name:"e-commerce", id:15}, {name:"health", id:447}];
+  const category_mega = [{name:"Education", id: 63}, {name:"E-commerce", id:15}, {name:"Health", id:447}];
   const order_mega = [{name: "ascending", id: 9652}, {name: "descending", id: 5452}];
   const date_mega = [{ name: "ascending", id: 9954 }, { name: "descending", id: 333 }];
 
