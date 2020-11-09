@@ -3,14 +3,17 @@ import short from 'short-uuid';
 import CurrentTemplatesInfo from '../CurrentTemplatesInFo/CurrentTemplatesInfo'
 // import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-// import chunk from 'lodash.chunk';
+import chunk from 'lodash.chunk';
 import './Templates.scss';
 import { fetchTemplates } from '../../actions/index';
 const Template = lazy(() => import('../Template/Template'));
 // import Template from '../Template/Template';
 
 
-function Templates({ unModifiedTemplates, fetchTemplates}) {
+function Templates({ unModifiedTemplates, fetchTemplates, page}) {
+  let chunked = chunk(unModifiedTemplates, 50)[page];
+  let chunkedLength = unModifiedTemplates.length
+  console.log(chunked)
   
   const templatesList = unModifiedTemplates.map(function (template) {
     return(
@@ -42,7 +45,8 @@ function Templates({ unModifiedTemplates, fetchTemplates}) {
 };
 
 const mapStateToProps = (state) => ({
-  unModifiedTemplates: state.templates.filteredTemplates
+  unModifiedTemplates: state.templates.filteredTemplates,
+  page: state.templates.page
 })
 
 export default connect(mapStateToProps, { fetchTemplates })(Templates);

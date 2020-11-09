@@ -110,3 +110,15 @@ export const emptyFields = (templateFilterParam) => {
     }
   }
 };
+
+export const incrementPage = () => {
+  return {
+    type: "INCREMENT_PAGE",
+  }
+};
+
+export const decrementPage = () => {
+  return {
+    type: "DECREMENT_PAGE",
+  }
+};
