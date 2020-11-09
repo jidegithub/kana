@@ -6,7 +6,7 @@ import SelectDropDown from './components/SelectDropDown/SelectDropDown';
 
 function App() {
   const info = "Tada! Get started with free template. Can't find what you are looking for? Search from the 1000+ available templates"
-  const category_mega = [{name: "all", id: 582226},{name:"Education", id: 63}, {name:"E-commerce", id:15}, {name:"Health", id:447}];
+  const category_mega = [{name: "All", id: 582226},{name:"Education", id: 63}, {name:"E-commerce", id:15}, {name:"Health", id:447}];
   const order_mega = [{name: "ascending", id: 9652}, {name: "descending", id: 5452}];
   const date_mega = [{ name: "ascending", id: 9954 }, { name: "descending", id: 333 }];
 

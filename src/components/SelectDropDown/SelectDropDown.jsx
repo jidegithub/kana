@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import Proptypes from 'prop-types'
 import { connect } from 'react-redux';
-import { sortTemplatePerDate, sortTemplatePerNameOrder, filterTemplatesParams, setSelectedTemplate } from '../../actions'
+import { sortTemplatePerDate, sortTemplatePerNameOrder, filterTemplatesParams, setSelectedTemplate, emptyFields } from '../../actions'
 import {
   SPACEBAR_KEY_CODE,
   ENTER_KEY_CODE,
@@ -50,8 +50,9 @@ function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplate
     switch (label) {
       case "Category":
         return (
-          filterTemplatesParams(filteredTemplates, { category: selected }),
-          setSelectedTemplate(selected)
+          filterTemplatesParams(allTemplates, { category: selected }),
+          setSelectedTemplate(selected),
+          emptyFields(selected)
         ) 
       case "Order":
         return sortTemplatePerNameOrder(filteredTemplates, selected)
@@ -205,14 +206,16 @@ const mapStateToprops = (state) => ({
   filteredTemplates: state.templates.filteredTemplates,
   order: state.templates.order,
   dateCreated: state.dateCreated,
-  selectedTemplate: state.templates.selectedTemplate
+  selectedTemplate: state.templates.selectedTemplate,
+  console: console.log(state)
 })
 
 export default connect(mapStateToprops, {
   sortTemplatePerNameOrder,
   sortTemplatePerDate,
   filterTemplatesParams,
-  setSelectedTemplate
+  setSelectedTemplate,
+  emptyFields
 })(SelectDropDown);
 
 

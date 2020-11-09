@@ -23,7 +23,7 @@ export const fetchTemplates = () => {
 
 export const filterTemplatesParams = (allTemplates, templateFilterParam) => {
   return {
-    type: "TEMPLATES_FILTER_PARAM",
+    type: "FILTER_TEMPLATES_CATEGORY",
     payload: {
       templateFilterParam: templateFilterParam,
       MatchedTemplates: templateFilterParam.category === "All" ? allTemplates : allTemplates.filter((template) => (
@@ -88,17 +88,26 @@ export const sortTemplatePerDate = (allTemplates, dateCreated) => (dispatch) => 
     templates.sort((a, b) => (a.id > b.id ? 1 : -1));
   }
   dispatch({
-    type: "SORT_TEMPLATE_DATE",
+    type: "ORDER_TEMPLATES_BY_DATE_CREATED",
     payload: {
       dateCreated: dateCreated,
       items: templates
     }
   })
-}
+};
 
 export const setSelectedTemplate = (name) => {
   return {
-    type: "SELECT_TEMPLATE",
+    type: "SET_CURRENT_TEMPLATE_NAME",
     payload: name
+  }
+};
+
+export const emptyFields = (templateFilterParam) => {
+  return {
+    type: "EMPTY_FIELDS",
+    payload: {
+      templateFilterParam: templateFilterParam === "All" ? "" : null
+    }
   }
 };

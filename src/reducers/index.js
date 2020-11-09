@@ -11,8 +11,8 @@ const templatesReducer = (state = initState, action) => {
         ...state,
         filteredTemplates: action.payload.matchedTemplates,
         searchParam: action.payload.searchParam
-      }
-    case "TEMPLATES_FILTER_PARAM":
+      };
+    case "FILTER_TEMPLATES_CATEGORY":
       return { ...state,
         filteredTemplates: action.payload.MatchedTemplates, 
         templateFilterParam: action.payload.templateFilterParam, 
@@ -23,15 +23,22 @@ const templatesReducer = (state = initState, action) => {
         ...state, 
         filteredTemplates: action.payload.items,
         order: action.payload.order
-      }
-    case "SORT_TEMPLATE_DATE" :
+      };
+    case "ORDER_TEMPLATES_BY_DATE_CREATED" :
       return {
         ...state, 
         filteredTemplates: action.payload.items,
         dateCreated: action.payload.dateCreated
-      }
-    case "SELECT_TEMPLATE":
+      };
+    case "SET_CURRENT_TEMPLATE_NAME":
       return { ...state, selectedTemplate: action.payload };
+    case "EMPTY_FIELDS":
+      return {
+        ...state, 
+        searchParam: action.payload.templateFilterParam, 
+        order: action.payload.templateFilterParam, 
+        dateCreated: action.payload.templateFilterParam
+      }
     default:
       return state;
   }
