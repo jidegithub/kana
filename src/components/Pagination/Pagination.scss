@@ -1,0 +1,21 @@
+.pagination-main-info{
+  margin: 0 2.182rem;
+  flex-wrap: wrap;
+  & p{
+    flex: 0 0 33.333333%;
+    font-weight: 500;
+  }
+}
+.switch_next_container{
+  position: relative;
+  & span{
+    position: absolute;
+    right: -24px;
+    bottom: -7px;
+  }
+}
+.current_page_display{
+  padding: .2rem .6rem;
+  border: 1px solid var(--primary-color-text);
+}
+

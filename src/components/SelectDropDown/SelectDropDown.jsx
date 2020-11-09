@@ -207,7 +207,7 @@ const mapStateToprops = (state) => ({
   order: state.templates.order,
   dateCreated: state.dateCreated,
   selectedTemplate: state.templates.selectedTemplate,
-  console: console.log(state)
+  // console: console.log(state)
 })
 
 export default connect(mapStateToprops, {

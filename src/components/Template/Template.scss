@@ -13,15 +13,18 @@ $cell-padding: (4 * $spacing-unit);
   border-radius: 4px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   margin: 0 auto;
+  border-radius: 5px;
+  position: relative;
   // width: 50%;
   // width:30%;
-  padding: 20px 20px 20px 20px;
+  // padding: 20px 20px 0 20px;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
   h3 {
     color: $dark-blue;
     font-size: 2.2rem;
-    line-height: 1.4; 
+    line-height: 1.4;
+    padding: 0 20px; 
     margin: 20px auto;
     span{ 
       color: inherit; 
@@ -44,6 +47,7 @@ $cell-padding: (4 * $spacing-unit);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 0 20px;
 
     //   font-size: calc(2.5 * var(--spacing-unit));
     // padding: calc(var(--cell-padding));
@@ -60,12 +64,19 @@ a {
   border: none;
   cursor: pointer;
   color: $template-link-colorII;
+  background: whitesmoke;
   display: block;
   font-weight: 500;
   font-size: 1.3rem;
   line-height: 26px;
   letter-spacing: .025em;
-  padding: 0.45rem 0;
+  padding: 0.7rem 0 0.7rem 1.4rem;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  text-decoration: none;
+  position: absolute;
+  bottom: 0;
+  width: -webkit-fill-available;
   transition: background .15s ease;
   &:hover {
     background: #cfd7df;

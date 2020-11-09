@@ -40,6 +40,9 @@ body {
 .items-center{
   align-items: center;
 }
+.items-end{
+  align-items: end;
+}
 .flex-wrap-wrap{
   flex-wrap: wrap;
 }

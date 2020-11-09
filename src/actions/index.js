@@ -30,7 +30,6 @@ export const filterTemplatesParams = (allTemplates, templateFilterParam) => {
         // return typeof template == "string" ? template == templateFilterParam.value : category.indexOf(templateFilterParam.value) >= 0;
         template.category.indexOf(templateFilterParam.category) > -1
       )),
-      console: console.log(templateFilterParam)
     }
   }
 };

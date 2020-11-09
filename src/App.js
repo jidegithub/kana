@@ -3,6 +3,7 @@ import Prompt from './components/Prompt/Prompt';
 import SearchBox from './components/SearchBox/SearchBox';
 import Templates from './components/Templates/Templates';
 import SelectDropDown from './components/SelectDropDown/SelectDropDown';
+import Pagination from './components/Pagination/Pagination';
 
 function App() {
   const info = "Tada! Get started with free template. Can't find what you are looking for? Search from the 1000+ available templates."
@@ -46,6 +47,7 @@ function App() {
       <main className="main">
         <Prompt info={info}/>
         <Templates/>
+        <Pagination/>
       </main>
     </div>
   );

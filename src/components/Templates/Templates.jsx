@@ -3,6 +3,7 @@ import short from 'short-uuid';
 import CurrentTemplatesInfo from '../CurrentTemplatesInFo/CurrentTemplatesInfo'
 // import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+// import chunk from 'lodash.chunk';
 import './Templates.scss';
 import { fetchTemplates } from '../../actions/index';
 const Template = lazy(() => import('../Template/Template'));
