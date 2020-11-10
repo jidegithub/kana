@@ -51,7 +51,8 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
       case "Category":
         return (
           filterTemplatesParams(allTemplates, { category: selected }),
-          setSelectedTemplate(selected)
+          setSelectedTemplate(selected),
+          selected === "All" ? emptyFields(selected) : null
         ) 
       case "Order":
         return sortTemplatePerNameOrder(filteredTemplates, selected)
