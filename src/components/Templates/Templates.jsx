@@ -3,7 +3,6 @@ import short from 'short-uuid';
 import CurrentTemplatesInfo from '../CurrentTemplatesInFo/CurrentTemplatesInfo'
 import Proptypes  from 'prop-types';
 import { connect } from 'react-redux';
-// import chunk from 'lodash.chunk';
 import './Templates.scss';
 import { fetchTemplates } from '../../actions/index';
 const Template = lazy(() => import('../Template/Template'));
@@ -11,25 +10,14 @@ const Template = lazy(() => import('../Template/Template'));
 
 
 function Templates({ unModifiedTemplates, fetchTemplates, page}) {
-  // let chunked = chunk(unModifiedTemplates, 50)[page];
-  // let totalLength = unModifiedTemplates.length;
-  // // let chunkedLength = Math.round(chunked.length);
-  
-  // console.log(totalLength)
-  // console.log(chunked)
+  const paginate = (array, page_size, page_number) => {
+    // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+  }
 
-  // const computeScreenHeight = () => {
-  //   let kana = document.getElementById("root");
-  //   let kanaHeight = kana.scrollHeight - 500;
-  //   let localHeight = getComputedStyle(document.documentElement)
-  //     .getPropertyValue('--templatesContainerHeight');
-  //   // let localHeightNumber = parseInt(localHeight, 10);
-  //   document.documentElement.style.setProperty('--templatesContainerHeight', kanaHeight)
-    
-  //   console.log(kanaHeight, localHeight)
-  // }
-  
-  const templatesList = unModifiedTemplates.map(function (template) {
+  const chunkedTemeplates = paginate(unModifiedTemplates, 50, [page])
+
+  const templatesList = chunkedTemeplates.map(function (template) {
     return(
       <Template
         key={short.generate()}
@@ -43,14 +31,14 @@ function Templates({ unModifiedTemplates, fetchTemplates, page}) {
 
   useEffect(() => {
     fetchTemplates()
-  }, [fetchTemplates])
+  }, [fetchTemplates, unModifiedTemplates])
 
   return (
     <section className="templates-grand-container">
       <CurrentTemplatesInfo/>
       <div className="templates-grid">
         <Suspense fallback={templateListUnavailable()}>
-          {unModifiedTemplates.length ? templatesList : 
+          {chunkedTemeplates.length ? templatesList : 
         <div style={{marginLeft: 10}}><p>No templates found! try filtering.</p></div>}
         </Suspense>
       </div>
