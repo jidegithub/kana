@@ -15,13 +15,13 @@ $cell-padding: (4 * $spacing-unit);
   margin: 0 auto;
   border-radius: 5px;
   position: relative;
-  // width: 50%;
+  // width: 100%;
   // width:30%;
   // padding: 20px 20px 0 20px;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
   h3 {
-    color: $dark-blue;
+    color: var(--primary-color-text);
     font-size: 2.2rem;
     line-height: 1.4;
     padding: 0 20px; 
@@ -49,13 +49,9 @@ $cell-padding: (4 * $spacing-unit);
   justify-content: center;
   padding: 0 20px;
 
-    //   font-size: calc(2.5 * var(--spacing-unit));
-    // padding: calc(var(--cell-padding));
-    // flex-grow: 1;
-
   p {
     font-size: 1.5rem;
-    color: $dark-blue;
+    color: var(--primary-color-text);
     flex-basis: 100%;
     margin-bottom: 60px;
   }

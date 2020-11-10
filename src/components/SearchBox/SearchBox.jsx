@@ -5,7 +5,7 @@ import './SearchBox.scss'
 import {searchTemplate} from '../../actions' 
 
 
-function SearchBox({ searchTemplate, allTemplates, filteredTemplates}) {
+function SearchBox({ searchTemplate, allTemplates, filteredTemplates, searchParam}) {
   const [param, setParam] = useState("")
 
   const handleOnChange = e => {
@@ -23,7 +23,7 @@ function SearchBox({ searchTemplate, allTemplates, filteredTemplates}) {
     <div className="search-box">
       <input data-cy="search"
         onChange={handleOnChange}
-        value={param}
+        value={searchParam}
       className="search-box--input block-display appearance-none px-2 font-medium w-full border border-gray-200 text-gray-900 leading-tight overflow-hidden"
         placeholder="Search Templates" type="text" autoComplete="off"/>
 
@@ -46,7 +46,7 @@ SearchBox.propTypes = {
 const mapStateToProps = (state) => ({
   allTemplates: state.templates.templates,
   filteredTemplates: state.templates.filteredTemplates,
-  searchParam: state.searchParam
+  searchParam: state.templates.searchParam
 });
 
 export default connect(mapStateToProps ,{searchTemplate})(SearchBox);
