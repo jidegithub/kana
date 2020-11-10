@@ -46,7 +46,7 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
         dispatch(selected !== "All" ? action(allTemplates, selected) : actionII(selected));
         break;
       default:
-        dispatch(action(allTemplates, selected))
+        dispatch(action(filteredTemplates, selected))
     }
   }
   // const onClickOutside = e => {

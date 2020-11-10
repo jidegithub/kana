@@ -1,8 +1,11 @@
 import './App.scss';
+import { connect } from 'react-redux';
 import Prompt from './components/Prompt/Prompt';
 import SearchBox from './components/SearchBox/SearchBox';
 import Templates from './components/Templates/Templates';
 import SelectDropDown from './components/SelectDropDown/SelectDropDown';
+import Pagination from './components/Pagination/Pagination';
+import { sortTemplatePerDate, sortTemplatePerNameOrder, filterTemplatesParams, emptyFields } from './actions/index';
 
 function App() {
   const info = "Tada! Get started with free template. Can't find what you are looking for? Search from the 1000+ available templates."
