@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState } from 'react'
 import Proptypes from 'prop-types'
 import { connect } from 'react-redux';
 import { sortTemplatePerDate, sortTemplatePerNameOrder, filterTemplatesParams, setSelectedTemplate, emptyFields } from '../../actions'
@@ -22,9 +22,9 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
 
   const [listItemIds, setListItemIds] = useState([])
 
-  useEffect(() => {
-    AddOptionToListItemId()
-  }, [])
+  // useEffect(() => {
+  //   AddOptionToListItemId()
+  // }, [])
 
   // useEffect(() => {
   //   document.body.addEventListener("click", onClickOutside);

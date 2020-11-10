@@ -1,4 +1,4 @@
-### Assumptions / ### Thoughts
+### Assumptions / Thoughts
 
 ## Data source/ Resources json
   The Templates json data is about 250 thousand in total! In my opinion, it is a bit too much for 
