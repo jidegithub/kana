@@ -1,7 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState} from 'react'
 import Proptypes from 'prop-types'
 import { connect } from 'react-redux';
-import { sortTemplatePerDate, sortTemplatePerNameOrder, filterTemplatesParams, setSelectedTemplate, emptyFields } from '../../actions'
 import {
   SPACEBAR_KEY_CODE,
   ENTER_KEY_CODE,
@@ -11,8 +10,7 @@ import {
 } from "../../utils/keyboardCodes"
 import "./SelectDropDown.scss"
 
-
-function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemplates, allTemplates, filterTemplatesParams, sortTemplatePerNameOrder, sortTemplatePerDate, setSelectedTemplate, emptyFields }) {
+function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemplates, allTemplates, dispatch, action, actionII }) {
 
   const list = useRef(null);
   const listContainer = useRef(null)
@@ -21,10 +19,6 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
   const dropDownSelectedNode = useRef(null)
 
   const [listItemIds, setListItemIds] = useState([])
-
-  // useEffect(() => {
-  //   AddOptionToListItemId()
-  // }, [])
 
   // useEffect(() => {
   //   document.body.addEventListener("click", onClickOutside);
@@ -40,7 +34,7 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
   }
 
   const handleOnSelect = (e) => {
-    const {innerText} = e.target
+    const { innerText } = e.target
     toggleAction(innerText)
     setSelectedListItem(e);
     closeList();
@@ -49,20 +43,12 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
   const toggleAction = (selected) => {
     switch (label) {
       case "Category":
-        return (
-          filterTemplatesParams(allTemplates, { category: selected }),
-          setSelectedTemplate(selected),
-          selected === "All" ? emptyFields(selected) : null
-        ) 
-      case "Order":
-        return sortTemplatePerNameOrder(filteredTemplates, selected)
-      case "Date":
-        return sortTemplatePerDate(filteredTemplates, selected)
+        dispatch(selected !== "All" ? action(allTemplates, selected) : actionII(selected));
+        break;
       default:
-        return null
+        dispatch(action(allTemplates, selected))
     }
   }
-
   // const onClickOutside = e => {
   //   // const { onClose } = this.props;
   //   const element = e.target;
@@ -86,7 +72,7 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
     listContainer.current.setAttribute("aria-expanded", false);
   }
 
-  const toggleListVisibility = (e) =>  {
+  const toggleListVisibility = (e) => {
     AddOptionToListItemId()
     let openDropDown = SPACEBAR_KEY_CODE.includes(e.keyCode) || e.keyCode === ENTER_KEY_CODE;
 
@@ -178,7 +164,7 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
           <title>Open drop down</title>
           <path d="M10 0L5 5 0 0z"></path>
         </svg>
-        <li ref={listContainer}  role="list" className="dropdown__list-container">
+        <li ref={listContainer} role="list" className="dropdown__list-container">
           <ul ref={list} className="dropdown__list">
             {dropdownOptions.map((option, i) =>
               <li key={option.id}
@@ -197,15 +183,12 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
 
 SelectDropDown.propTypes = {
   dropdownOptions: Proptypes.array.isRequired,
+  id: Proptypes.string.isRequired,
   label: Proptypes.string.isRequired,
   defaultValue: Proptypes.string.isRequired,
-  filteredTemplates: Proptypes.array.isRequired, 
-  allTemplates: Proptypes.array.isRequired, 
-  filterTemplatesParams: Proptypes.func.isRequired, 
-  sortTemplatePerNameOrder: Proptypes.func.isRequired, 
-  sortTemplatePerDate: Proptypes.func.isRequired, 
-  setSelectedTemplate: Proptypes.func.isRequired, 
-  emptyFields: Proptypes.func.isRequired
+  filteredTemplates: Proptypes.array.isRequired,
+  allTemplates: Proptypes.array.isRequired,
+  dispatch: Proptypes.func.isRequired
 }
 
 const mapStateToprops = (state) => ({
@@ -214,16 +197,9 @@ const mapStateToprops = (state) => ({
   order: state.templates.order,
   dateCreated: state.dateCreated,
   selectedTemplate: state.templates.selectedTemplate,
-  // console: console.log(state)
 })
 
-export default connect(mapStateToprops, {
-  sortTemplatePerNameOrder,
-  sortTemplatePerDate,
-  filterTemplatesParams,
-  setSelectedTemplate,
-  emptyFields
-})(SelectDropDown);
+export default connect(mapStateToprops)(SelectDropDown);
 
 
 

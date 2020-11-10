@@ -1,14 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import Proptypes from 'prop-types';
-import { setSelectedTemplate } from '../../actions';
 import "./CurrentInfoTemplates.scss"
 
-function CurrentTemplatesInfo({ setSelectedTemplate, selected, templates}) {
+function CurrentTemplatesInfo({ selected, templates }) {
 
-  // useEffect(() => {
-  //   setSelectedTemplate("All")
-  // }, [])
 
   return (
     <div className="templatesinfo flex flex-justify-between">
@@ -28,6 +24,4 @@ const mapStateToProps = (state) => ({
   templates: state.templates.filteredTemplates
 });
 
-export default connect(mapStateToProps, {setSelectedTemplate})(CurrentTemplatesInfo);
-
-
+export default connect(mapStateToProps)(CurrentTemplatesInfo);

@@ -27,10 +27,12 @@ export const filterTemplatesParams = (allTemplates, templateFilterParam) => {
     type: "FILTER_TEMPLATES_CATEGORY",
     payload: {
       templateFilterParam: templateFilterParam,
-      MatchedTemplates: templateFilterParam.category === "All" ? allTemplates : allTemplates.filter((template) => (
+      MatchedTemplates: templateFilterParam === "All" ? allTemplates : allTemplates.filter((template) => (
         // return typeof template == "string" ? template == templateFilterParam.value : category.indexOf(templateFilterParam.value) >= 0;
-        template.category.indexOf(templateFilterParam.category) > -1
+        template.category.indexOf(templateFilterParam) > -1
       )),
+      selectedTemplate: templateFilterParam,
+      empty: templateFilterParam === "All" ? "" && resetFields() : null
     }
   }
 };
@@ -96,10 +98,15 @@ export const sortTemplatePerDate = (allTemplates, dateCreated) => (dispatch) => 
   })
 };
 
-export const setSelectedTemplate = (name) => {
+export const incrementPage = () => {
   return {
-    type: "SET_CURRENT_TEMPLATE_NAME",
-    payload: name
+    type: "INCREMENT_PAGE",
+  }
+};
+
+export const decrementPage = () => {
+  return {
+    type: "DECREMENT_PAGE",
   }
 };
 
@@ -110,17 +117,5 @@ export const emptyFields = (templateFilterParam) => {
     payload: {
       templateFilterParam: templateFilterParam === "All" ? "" : null
     }
-  }
-};
-
-export const incrementPage = () => {
-  return {
-    type: "INCREMENT_PAGE",
-  }
-};
-
-export const decrementPage = () => {
-  return {
-    type: "DECREMENT_PAGE",
   }
 };
