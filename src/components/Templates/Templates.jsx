@@ -3,31 +3,12 @@ import short from 'short-uuid';
 import CurrentTemplatesInfo from '../CurrentTemplatesInFo/CurrentTemplatesInfo'
 import Proptypes  from 'prop-types';
 import { connect } from 'react-redux';
-// import chunk from 'lodash.chunk';
 import './Templates.scss';
 import { fetchTemplates } from '../../actions/index';
 const Template = lazy(() => import('../Template/Template'));
-// import Template from '../Template/Template';
 
 
 function Templates({ unModifiedTemplates, fetchTemplates, page}) {
-  // let chunked = chunk(unModifiedTemplates, 50)[page];
-  // let totalLength = unModifiedTemplates.length;
-  // // let chunkedLength = Math.round(chunked.length);
-  
-  // console.log(totalLength)
-  // console.log(chunked)
-
-  // const computeScreenHeight = () => {
-  //   let kana = document.getElementById("root");
-  //   let kanaHeight = kana.scrollHeight - 500;
-  //   let localHeight = getComputedStyle(document.documentElement)
-  //     .getPropertyValue('--templatesContainerHeight');
-  //   // let localHeightNumber = parseInt(localHeight, 10);
-  //   document.documentElement.style.setProperty('--templatesContainerHeight', kanaHeight)
-    
-  //   console.log(kanaHeight, localHeight)
-  // }
   
   const templatesList = unModifiedTemplates.map(function (template) {
     return(

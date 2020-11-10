@@ -1,4 +1,4 @@
-### Assumptions 
+### Assumptions / ###Thoughts
 
 ## Data source/ Resources json
   The Templates json data is about 250 thousand in total! In my opinion, it is a bit too much for 
@@ -7,8 +7,8 @@
     To curb this i copied a large set of data and stored it as a json file in the project folder. 
 
 ## Pagination component
-  Due to the aformentioned above, I could'nt wrap up the pagination. I instead used infinite scrolling
-  to fetch data when needed.
+  Due to the aformentioned above, I could'nt wrap up the pagination. I could have used infinite scrolling
+  to fetch data but the json file is stored in the project so reading the file is going to require another uneccesary setup.
 
 ## Data structure
   The data structure of a single template json data can be better.
