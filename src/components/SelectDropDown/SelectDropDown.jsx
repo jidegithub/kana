@@ -57,7 +57,7 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
       case "Order":
         return sortTemplatePerNameOrder(filteredTemplates, selected)
       case "Date":
-        return sortTemplatePerDate(allTemplates, selected)
+        return sortTemplatePerDate(filteredTemplates, selected)
       default:
         return null
     }
@@ -178,7 +178,7 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
           <title>Open drop down</title>
           <path d="M10 0L5 5 0 0z"></path>
         </svg>
-        <li ref={listContainer} aria-expanded="false" role="list" className="dropdown__list-container">
+        <li ref={listContainer}  role="list" className="dropdown__list-container">
           <ul ref={list} className="dropdown__list">
             {dropdownOptions.map((option, i) =>
               <li key={option.id}
