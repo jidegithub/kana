@@ -1,4 +1,4 @@
-### Assumptions / ###Thoughts
+### Assumptions / ### Thoughts
 
 ## Data source/ Resources json
   The Templates json data is about 250 thousand in total! In my opinion, it is a bit too much for 
@@ -13,9 +13,6 @@
 ## Data structure
   The data structure of a single template json data can be better.
 
-## Emptying fields
-  Concerning emptying the 'Order' and 'Date' select dropdown when 'All' option in Category is clicked.
-  It is work in progress.
 
 
 
