@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import Proptypes from 'prop-types';
 import { setSelectedTemplate } from '../../actions';
 import "./CurrentInfoTemplates.scss"
 
@@ -16,6 +17,11 @@ function CurrentTemplatesInfo({ setSelectedTemplate, selected, templates}) {
     </div>
   )
 };
+
+CurrentTemplatesInfo.propTypes = {
+  selected: Proptypes.string.isRequired,
+  templates: Proptypes.array.isRequired
+}
 
 const mapStateToProps = (state) => ({
   selected: state.templates.selectedTemplate,

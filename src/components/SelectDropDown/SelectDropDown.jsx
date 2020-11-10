@@ -198,7 +198,14 @@ function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplate
 SelectDropDown.propTypes = {
   dropdownOptions: Proptypes.array.isRequired,
   label: Proptypes.string.isRequired,
-  defaultValue: Proptypes.string.isRequired
+  defaultValue: Proptypes.string.isRequired,
+  filteredTemplates: Proptypes.array.isRequired, 
+  allTemplates: Proptypes.array.isRequired, 
+  filterTemplatesParams: Proptypes.func.isRequired, 
+  sortTemplatePerNameOrder: Proptypes.func.isRequired, 
+  sortTemplatePerDate: Proptypes.func.isRequired, 
+  setSelectedTemplate: Proptypes.func.isRequired, 
+  emptyFields: Proptypes.func.isRequired
 }
 
 const mapStateToprops = (state) => ({

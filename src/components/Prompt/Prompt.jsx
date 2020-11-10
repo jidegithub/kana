@@ -1,4 +1,5 @@
 import React from 'react'
+import Proptypes from 'prop-types';
 import "./prompt.scss"
 
 export default function Prompt({info}) {
@@ -17,4 +18,8 @@ export default function Prompt({info}) {
       </p>
     </div>
   )
+};
+
+Prompt.propTypes = {
+  info: Proptypes.string.isRequired,
 }

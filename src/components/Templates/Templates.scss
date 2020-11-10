@@ -1,9 +1,13 @@
+:root{
+  --templatesContainerHeight: 1024px;
+}
+
 .templates-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(180px, 1fr));
   // grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-gap: 2em;
-  height: 1024px;
+  height: var(--templatesContainerHeight);
   overflow-x:auto;
   padding: 0.5rem 1.5rem;
 

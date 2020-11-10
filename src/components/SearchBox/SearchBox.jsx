@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux';
+import Proptypes from 'prop-types';
 import './SearchBox.scss'
 import {searchTemplate} from '../../actions' 
 
@@ -36,6 +37,11 @@ function SearchBox({ searchTemplate, allTemplates, filteredTemplates}) {
     </div>
   )
 };
+
+SearchBox.propTypes = {
+  searchTemplate: Proptypes.func.isRequired,
+  allTemplates: Proptypes.array.isRequired
+}
 
 const mapStateToProps = (state) => ({
   allTemplates: state.templates.templates,

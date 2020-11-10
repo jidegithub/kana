@@ -1,4 +1,5 @@
 import React from 'react'
+import Proptypes from 'prop-types';
 import './Template.scss'
 
 export default function Template({description, name}) {
@@ -15,3 +16,9 @@ export default function Template({description, name}) {
     </div>
   )
 };
+
+Template.propTypes = {
+  name: Proptypes.string.isRequired,
+  description: Proptypes.string.isRequired
+}
+
