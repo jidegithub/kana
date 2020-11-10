@@ -1,5 +1,6 @@
 // import templatesApi from "../apis/templates";
 import template_data from "../../src/data/templates.json";
+import resetFields from '../utils/resetSpecifiedDropDown';
 // import { sortBy } from '../utils/arrayFilterer';
 // import chunk from 'lodash.chunk';
 
@@ -103,6 +104,7 @@ export const setSelectedTemplate = (name) => {
 };
 
 export const emptyFields = (templateFilterParam) => {
+  resetFields();
   return {
     type: "EMPTY_FIELDS",
     payload: {

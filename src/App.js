@@ -26,18 +26,21 @@ function App() {
               dropdownOptions={category_mega}
               label="Category"
               defaultValue="all"
+              id="category"
               // action={action.filterTemplatesParams, action.setSelectedTemplate}
             />
             <SelectDropDown
               dropdownOptions={order_mega}
               label="Order"
               defaultValue="default"
+              id="order"
               // action={sortTemplatePerNameOrder}
             />
             <SelectDropDown
               dropdownOptions={date_mega}
               label="Date"
               defaultValue="default"
+              id="date"
               // action={sortTemplatePerDate}
             />
           </div>
