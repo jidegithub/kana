@@ -43,7 +43,7 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
   const toggleAction = (selected) => {
     switch (label) {
       case "Category":
-        dispatch(selected !== "All" ? action(allTemplates, selected) : actionII(selected));
+        dispatch(selected !== "All" ? action(allTemplates, selected) : actionII(allTemplates, selected));
         break;
       default:
         dispatch(action(filteredTemplates, selected))

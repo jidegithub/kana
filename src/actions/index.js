@@ -32,7 +32,7 @@ export const filterTemplatesParams = (allTemplates, templateFilterParam) => {
         template.category.indexOf(templateFilterParam) > -1
       )),
       selectedTemplate: templateFilterParam,
-      empty: templateFilterParam === "All" ? "" && resetFields() : null
+      // empty: templateFilterParam === "All" ? "" && resetFields() : null
     }
   }
 };
@@ -110,12 +110,14 @@ export const decrementPage = () => {
   }
 };
 
-export const emptyFields = (templateFilterParam) => {
+export const emptyFields = (allTemplates, templateFilterParam) => {
   resetFields();
   return {
     type: "EMPTY_FIELDS",
     payload: {
-      templateFilterParam: templateFilterParam === "All" ? "" : null
+      templateFilterParam: templateFilterParam === "All" ? "" : null,
+      allTemplates: allTemplates,
+      selectedTemplate: templateFilterParam,
     }
   }
 };

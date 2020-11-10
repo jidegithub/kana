@@ -46,9 +46,11 @@ const templatesReducer = (state = initState, action) => {
     case "EMPTY_FIELDS":
       return {
         ...state,
+        filteredTemplates: action.payload.allTemplates, 
         searchParam: action.payload.templateFilterParam,
         order: action.payload.templateFilterParam,
-        dateCreated: action.payload.templateFilterParam
+        dateCreated: action.payload.templateFilterParam,
+        selectedTemplate: action.payload.selectedTemplate
       }
     default:
       return state;
