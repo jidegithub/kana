@@ -12,7 +12,7 @@ import {
 import "./SelectDropDown.scss"
 
 
-function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplates, allTemplates, filterTemplatesParams, sortTemplatePerNameOrder, sortTemplatePerDate, setSelectedTemplate, emptyFields }) {
+function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemplates, allTemplates, filterTemplatesParams, sortTemplatePerNameOrder, sortTemplatePerDate, setSelectedTemplate, emptyFields }) {
 
   const list = useRef(null);
   const listContainer = useRef(null)
@@ -51,8 +51,7 @@ function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplate
       case "Category":
         return (
           filterTemplatesParams(allTemplates, { category: selected }),
-          setSelectedTemplate(selected),
-          emptyFields(selected)
+          setSelectedTemplate(selected)
         ) 
       case "Order":
         return sortTemplatePerNameOrder(filteredTemplates, selected)
@@ -139,7 +138,7 @@ function SelectDropDown({ dropdownOptions, label, defaultValue, filteredTemplate
 
   return (
     <>
-      <ul className="dropdown">
+      <ul className="dropdown" id={id}>
         <li id="dropdown-label" className="dropdown__label">
           {label}
         </li>
