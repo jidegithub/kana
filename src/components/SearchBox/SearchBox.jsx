@@ -18,7 +18,6 @@ function SearchBox({ searchTemplate, allTemplates, filteredTemplates, searchPara
   useEffect(() => {
   }, [param])
 
-
   return (
     <div className="search-box">
       <input data-cy="search"
