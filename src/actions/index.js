@@ -122,3 +122,10 @@ export const decrementPage = () => {
     type: "DECREMENT_PAGE",
   }
 };
+
+export const setPageMax = (num) => {
+  return {
+    type: "SET_MAX_PAGE",
+    payload : num
+  }
+};

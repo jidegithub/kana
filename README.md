@@ -6,10 +6,6 @@
   not only affects initial page load, it also makes the components to re-render and re-order themselves over and over again. overall application performance is signaficantly throttled.
     To curb this i copied a large set of data and stored it as a json file in the project folder. 
 
-## Pagination component
-  Due to the aformentioned above, I could'nt wrap up the pagination. I instead used infinite scrolling
-  to fetch data when needed.
-
 ## Data structure
   The data structure of a single template json data can be better.
 

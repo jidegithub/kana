@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const initState = { templates: [], filteredTemplates: [], searchParam: "", selectedTemplate: "All", templateFilterParam: {}, order: "", dateCreated: "", page: 1 };
+const initState = { templates: [], filteredTemplates: [], searchParam: "", selectedTemplate: "All", templateFilterParam: {}, order: "", dateCreated: "", page: 1, pageMax: 0 };
 
 const templatesReducer = (state = initState, action) => {
   switch (action.type) {
@@ -47,6 +47,11 @@ const templatesReducer = (state = initState, action) => {
       return {
         ...state,
         page: state.page - 1
+      }
+    case "SET_MAX_PAGE":
+      return {
+        ...state,
+        pageMax: action.payload
       }
     default:
       return state;

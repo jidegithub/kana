@@ -4,20 +4,26 @@ import CurrentTemplatesInfo from '../CurrentTemplatesInFo/CurrentTemplatesInfo'
 import Proptypes  from 'prop-types';
 import { connect } from 'react-redux';
 import './Templates.scss';
-import { fetchTemplates } from '../../actions/index';
+import { fetchTemplates, setPageMax } from '../../actions/index';
 const Template = lazy(() => import('../Template/Template'));
 // import Template from '../Template/Template';
 
 
-function Templates({ unModifiedTemplates, fetchTemplates, page}) {
+function Templates({ unModifiedTemplates, fetchTemplates, page, setPageMax}) {
   const paginate = (array, page_size, page_number) => {
     // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
     return array.slice((page_number - 1) * page_size, page_number * page_size);
   }
 
-  const chunkedTemeplates = paginate(unModifiedTemplates, 50, [page])
+  const per_page = 50;
 
-  const templatesList = chunkedTemeplates.map(function (template) {
+  const page_max = unModifiedTemplates.length/per_page;
+
+  const page_max_rounded = Math.round(page_max + 1);
+
+  const chunkedTemplates = paginate(unModifiedTemplates, per_page, [page])
+
+  const templatesList = chunkedTemplates.map(function (template) {
     return(
       <Template
         key={short.generate()}
@@ -33,12 +39,16 @@ function Templates({ unModifiedTemplates, fetchTemplates, page}) {
     fetchTemplates()
   }, [fetchTemplates, unModifiedTemplates])
 
+  useEffect(() => {
+    setPageMax(page_max_rounded)
+  }, [unModifiedTemplates, page_max_rounded])
+
   return (
     <section className="templates-grand-container">
       <CurrentTemplatesInfo/>
       <div className="templates-grid">
         <Suspense fallback={templateListUnavailable()}>
-          {chunkedTemeplates.length ? templatesList : 
+          {chunkedTemplates.length ? templatesList : 
         <div style={{marginLeft: 10}}><p>No templates found! try filtering.</p></div>}
         </Suspense>
       </div>
@@ -49,6 +59,8 @@ function Templates({ unModifiedTemplates, fetchTemplates, page}) {
 Templates.propTypes = {
   fetchTemplates: Proptypes.func.isRequired,
   unModifiedTemplates: Proptypes.array.isRequired,
+  page: Proptypes.number.isRequired,
+  setPageMax: Proptypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -56,5 +68,5 @@ const mapStateToProps = (state) => ({
   page: state.templates.page
 });
 
-export default connect(mapStateToProps, { fetchTemplates })(Templates);
+export default connect(mapStateToProps, { fetchTemplates, setPageMax })(Templates);
 
