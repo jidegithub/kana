@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from 'react'
+import React, { useEffect, Suspense, lazy, memo } from 'react'
 import short from 'short-uuid';
 import CurrentTemplatesInfo from '../CurrentTemplatesInFo/CurrentTemplatesInfo'
 import Proptypes  from 'prop-types';
@@ -55,5 +55,5 @@ const mapStateToProps = (state) => ({
   page: state.templates.page
 });
 
-export default connect(mapStateToProps, { fetchTemplates, setPageMax })(Templates);
+export default memo(connect(mapStateToProps, { fetchTemplates })(Templates));
 
