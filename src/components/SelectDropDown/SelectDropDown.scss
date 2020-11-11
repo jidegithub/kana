@@ -26,7 +26,9 @@
   &__arrow {
     position: absolute;
     right: 10px;
-    top: 50%;
+    // top: 50%;
+    top: 26%;
+    color: var(--primary-color-lightdark);
     transition: transform .2s linear;
     
     &.expanded {

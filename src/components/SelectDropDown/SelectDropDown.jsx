@@ -141,29 +141,14 @@ function SelectDropDown({ dropdownOptions, label, id, defaultValue, filteredTemp
           {defaultValue}
         </li>
 
-        {/* <svg xmlns="http://www.w3.org/2000/svg" 
-          className=" dropdown__arrow icon icon-tabler icon-tabler-chevron-down" 
-          width="20" height="25" 
-          viewBox="0 0 10 5" strokeWidth="2" 
-          stroke="currentColor" fill="#b3c" 
-          strokeLinecap="round" strokeLinejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" />
-          <title>Open drop down</title>
-          <polyline points="6 9 12 15 18 9" />
-        </svg> */}
-
-        <svg
-          ref={dropDownArrow}
-          className="dropdown__arrow"
-          width="10"
-          height="5"
-          viewBox="0 0 10 5"
-          fill="#aca7a7"
-          fillRule="evenodd"
+        <svg xmlns="http://www.w3.org/2000/svg" ref={dropDownArrow} className="icon dropdown__arrow icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round"
+        fillRule="evenodd"
         >
+          <path stroke="none" d="M10 0L5 5 0 0z" />
+          <polyline points="6 9 12 15 18 9" />
           <title>Open drop down</title>
-          <path d="M10 0L5 5 0 0z"></path>
         </svg>
+
         <li ref={listContainer} role="list" className="dropdown__list-container">
           <ul ref={list} className="dropdown__list">
             {dropdownOptions.map((option, i) =>
