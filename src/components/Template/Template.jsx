@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {memo} from 'react'
 import Proptypes from 'prop-types';
 import './Template.scss'
 
-export default function Template({description, name}) {
+function Template({description, name}) {
   return (
     <div className="template-container">
       <h3 className="flex flex-justify-center">
@@ -21,4 +21,4 @@ Template.propTypes = {
   name: Proptypes.string.isRequired,
   description: Proptypes.string.isRequired
 }
-
+export default memo(Template);
