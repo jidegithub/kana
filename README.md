@@ -7,8 +7,15 @@
     To curb this i copied a large set of data and stored it as a json file in the project folder. 
 
 ## Pagination component
-  Due to the aformentioned above, I could'nt wrap up the pagination. I could have used infinite scrolling
-  to fetch data but the json file is stored in the project so reading the file is going to require another uneccesary setup.
+  Due to the aformentioned above, I could'nt implement the pagination. I could even chunk the dataset after
+  getting back the response but thats a very expensive computational overhead for a dataset of that size and
+  since performance is key here. It's a no-no.
+  I could use other methods like fetching the data when user requests for it but it's still a dead end
+  to fetch dataset but the json file is stored in the project so reading the file is going to require another uneccesary setup.
+
+## Dataset Fetch Query/Limiting
+  Sequel to the above, the api doesn't come with data limiting/ data skipping capabilities i.e "api/?page=10/skip=5" so i have to actually fetch everything! 
+
 
 ## Data structure
   The data structure of a single template json data can be better.
