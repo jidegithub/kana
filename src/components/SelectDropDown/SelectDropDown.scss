@@ -52,7 +52,7 @@
   }
   
   &__list-container {
-    position: relative;
+    
   }
   
   ul {
@@ -90,7 +90,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 80%;
+  // max-width: 80%;
   
   &:focus {
     outline: 1px solid var(--primary-color-lightdark);
